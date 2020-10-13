@@ -1,0 +1,38 @@
+li {
+    list-style: none;
+    height: 100px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    margin: 10px 0px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.headerModule {
+    height: 50px;
+}
+
+.sectionModule {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.questionHits {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #1E88A8;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+}
