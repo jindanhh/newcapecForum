@@ -1,0 +1,237 @@
+use newcapecForum
+
+db.topicModules.insert([
+    {
+        moduleName:'UI设计'
+    },{
+        moduleName:'Java开发'
+    },{
+        moduleName:'嵌入式开发'
+    },{
+        moduleName:'安卓开发'
+    },{
+        moduleName:'WEB前端开发'
+    },{
+        moduleName:'综合'
+    },{
+        moduleName:'全部'
+    }
+])
+
+
+db.topicModules.find()
+
+db.topicWorlds.insert([
+    {
+        topicTitle : "UI设计小技巧",
+        topicContent: "功能极简主义......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36c"
+    },
+    {
+        topicTitle : "UI设计6大工具",
+        topicContent: "Sketch及插件-矢量绘图软件......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36c"
+    },
+    {
+        topicTitle : "UI设计理念",
+        topicContent: "设计价值观：......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36c"
+    },{
+        topicTitle : "UI设计总结",
+        topicContent: "平面设计基础：......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36c"
+    }
+])
+
+
+
+db.topicWorlds.insert([
+    {
+        topicTitle : "Java语言入门",
+        topicContent: "快速掌握Java的基本语法，建立对Java编程的基本认识......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36d"
+    },
+    {
+        topicTitle : "java中的前++和后++",
+        topicContent: "前++是先自加再使用而后++是先使用再自加......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36d"
+    },
+    {
+        topicTitle : "Java学习的正确打开方式",
+        topicContent: "在博主认为，对于入门级学习java的最佳学习方法莫过于视频+博客+书籍+总结，前三者博主将淋漓尽致地挥毫于这篇博客文章中......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36d"
+    },{
+        topicTitle : "Java学习网站推荐",
+        topicContent: "动力节点：http://www.bjpowernode.com/video.htm......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36d"
+    }
+])
+
+db.topicWorlds.insert([
+    {
+        topicTitle : "什么是嵌入式开发？嵌入式是什么？",
+        topicContent: "嵌入式技术是以应用为中心，以计算机技术为基础，并且软硬件可裁剪，适用于应用系统对功能、可靠性、成本、体积、功耗有严格要求的专用计算机系统技术。......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36e"
+    },
+    {
+        topicTitle : "嵌入式Linux开发流程",
+        topicContent: "一、建立开发环境，二、配置开发主机......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36e"
+    },
+    {
+        topicTitle : "嵌入式开发经典网站",
+        topicContent: "1. OpenHardware developer site 2. SiliconPenguin.com ......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36e"
+    },{
+        topicTitle : "如何分分钟成为Java嵌入式开发人员",
+        topicContent: "用Java开发下一代嵌入式产品......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36e"
+    }
+])
+
+db.topicWorlds.insert([
+    {
+        topicTitle : "2018年的安卓开发环境搭建",
+        topicContent: "安装Android Studio，设置环境变量......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36f"
+    },
+    {
+        topicTitle : "安卓开发——登录界面",
+        topicContent: "项目功能需求......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36f"
+    },
+    {
+        topicTitle : "安卓开发必学书籍",
+        topicContent: "C语言\Android+移植技术......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36f"
+    },{
+        topicTitle : "Android开发--实现输入密码连接WIFI",
+        topicContent: "project中简单实现了连接WIFi的功能，首次连接WIFI信号时，可以输入密码并保存，第二次可以直接连接。......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa36f"
+    }
+])
+
+db.topicWorlds.insert([
+    {
+        topicTitle : "快速入门Web前端开发",
+        topicContent: "入门标准很简单，就一条：达到能参与 Web 前端实际项目的开发水平......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa370"
+    },
+    {
+        topicTitle : "入门标准很简单，就一条：达到能参与 Web 前端实际项目的开发水平",
+        topicContent: "一、前端视频教程-51自学网......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa370"
+    },
+    {
+        topicTitle : "web前端开发前景",
+        topicContent: "web前端开发的必经之路：HTMI→CSS→JAVASCRIPT......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa370"
+    },{
+        topicTitle : "Web前端开发工具",
+        topicContent: " 1、HBuilder、HBuilderX，2、Editplus......",
+        visitedCount: 10,
+        Poster:"admin",
+        topicTime:"2020-10-13 13:40",
+        topicReply:['test1','test2'],
+        topicStatus: 0 ,
+        topicModule:"5f853cbad80618fefb9fa370"
+    }
+])
+
+db.topicWorlds.find()
+

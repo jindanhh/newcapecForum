@@ -1,0 +1,26 @@
+{
+  "name": "newcapecforum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jindanhh/newcapecForum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jindanhh/newcapecForum/issues"
+  },
+  "homepage": "https://github.com/jindanhh/newcapecForum#readme",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "express": "^4.17.1",
+    "express-art-template": "^1.0.1",
+    "mongodb": "^3.6.2",
+    "multer": "^1.4.2"
+  }
+}
