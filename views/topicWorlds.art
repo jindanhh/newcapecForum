@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛-帖子列表页</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/css/populars.css"> -->
+</head>
+
+<body>
+    <div class="login-top" style="background: #fff;">
+        <div class="head">
+            <a href="http://edu.newcapec.com.cn/">
+                <img src="/images/logo.png"></a>
+            <span>
+                · 帖子列表页
+            </span>
+        </div>
+    </div>
+    <div class="index_bg"></div>
+
+    <div id="content" class="container">
+        {{each topiclist as topic}}
+        <div class="topic">
+            <div>
+                <a href="/topic/queryOne/{{topic._id}}">{{topic.topicTitle}}</a>
+            </div>
+            <div>
+                <a href=""><a href="">{{topic.Poster}}</a></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div id="pager">
+        <span>当前页: {{pageNum}} / {{pageCount}}</span>
+        <!-- 首页 -->
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=1&pageSize=2">首页</a>
+
+        <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
+        {{if (pageNum != 1)}}
+        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum-1}}&pageSize=2">上一页</a>
+        {{/if}}
+
+        <!-- 显示数值码 -->
+        <!-- 如果总页码小于等于5 -->
+        {{if (pageCount <= 5)}}
+        <% for(var i = 1; i <= pageCount; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum <= 3 && pageCount > 5) }}
+        <% for(var i = 1; i <= 5; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
+        <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum + 2 > pageCount && pageCount > 5)}}
+        <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
+        {{if (pageNum != pageCount)}}
+        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum+1}}&pageSize=2">下一页</a>
+        {{/if}}
+
+        <!-- 尾页 -->
+        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageCount}}&pageSize=2">尾页</a>
+    </div>
+</body>
+
+</html>

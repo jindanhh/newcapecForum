@@ -1,0 +1,12 @@
+body{
+    background: #FCFCFC;
+}
+footer{
+    background:#F7F6F6;
+    height: 80px;
+}
+
+footer p {
+    line-height: 80px;
+
+}

@@ -1,0 +1,38 @@
+
+.head img{
+    margin-top: 10px;
+}
+.head >span{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.caption .btn-primary{
+    position: absolute;
+    right: 15%;
+}
+
+.caption .btn-default{
+    margin: 0 4px;
+}
+
+.caption .btn-primary img{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.table tr:last-child{
+    border-bottom: 1px solid #ddd;
+}
+
+.service-content{
+    position: relative;
+}
+.service-content .btn{
+    margin-bottom: 10px;
+    position: relative;
+    left: 84%;
+    margin-top: -8px;
+    padding: 8px 35px;
+}
+

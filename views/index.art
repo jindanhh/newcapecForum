@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛-首页</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="login-top" style="background: #fff;">
+        <div class="head">
+            <a href="http://edu.newcapec.com.cn/"><img src="./images/logo.png"></a>
+            <span>
+                · 论坛
+            </span>
+        </div>
+    </div>
+
+    <div class="index_bg">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <h3 class="col-sm-3">帖子分类</h3>
+            <div class="thumbnail">
+                <div class="caption">
+                    {{each topicModules as module index}}
+                    <a href="" class="btn btn-default">{{module.moduleName}}</a>
+                    {{/each}}
+                    <a href="" class="btn btn-primary "><span><img src="./images/write.png" alt=""></span>发布帖子</a>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                {{each topicModules as module index}}
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3 id="">{{module.moduleName}}</h3>
+                    </div>
+                    <div class="service-content">
+                        <table class="table table-striped">
+
+                            {{each module.topicWorlds as topic}}
+                            <tr class="row">
+                                <td class="col-sm-2">
+                                    <p>{{topic.Poster}}</p>
+                                </td>
+                                <td class="col-sm-8">
+                                    <a href="/topic/queryOne/{{topic._id}}">
+                                        <h4>{{topic.topicTitle}}</h4>
+                                        <p>{{topic.topicContent}}</p>
+                                    </a>
+                                </td>
+                                <td class="col-sm-2">
+                                    <p>{{topic.topicTime}}</p>
+                                    <p>访问量：{{topic.visitedCount}}</p>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </table>
+
+                        <a href="/topic/queryAll/{{module.topicModule}}?pageNum=1&pageSize=2"
+                            class="btn btn-primary">查看更多</a>
+
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+    <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
+    </footer>
+
+</body>
+
+</html>
