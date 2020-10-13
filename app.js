@@ -1,12 +1,9 @@
-// 引入express模块
 const express = require('express');
 const app = express();
-// 引入nodeJS的path核心模块
 const path = require('path');
-
-
+const question = require('./routes/question');
 // 静态资源托管
-app.use(express.static('public'))
+app.use(express.static("public"))
 
 // 渲染引擎设置
 app.engine('art', require('express-art-template'));
@@ -23,6 +20,7 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-app.listen(3000, () => {
-    console.log(`Example app listening on port 3000!`)
-})
+// 加载question.js路由
+app.use("/question", question);
+
+app.listen(3000, () => console.log(`Example app listening on port 3000!`))
