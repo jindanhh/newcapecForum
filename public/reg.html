@@ -158,15 +158,6 @@
     <script src="./js/check.js"></script>
     <script src="js/gVerify.js"></script>
     <script>
-        setTimeout('changeState()', 1000)
-        //地球动画
-        // function changeState() {
-        //     // console.log('动画开始');
-        //     $('#earth').removeClass('earth');
-        //     $('#earth').addClass('move');
-        // }
-
-        // jQuery的页面加载完毕事件
         $(function () {
             // 验证弹窗
             // 点击按钮
@@ -203,7 +194,7 @@
                     name
                 })
             })
-            //手机号码验证
+            // 手机号码验证
             $('#regphone').blur(function () {
                 let phone = $('#regphone').val()
                 let obj = $('.check_reg_phone')
@@ -282,9 +273,7 @@
                 }
                 
             })
-
-
-          
+  
 
             //点击注册
             regist.click(function () {
@@ -306,14 +295,14 @@
                                 location.href = "http://127.0.0.1:3000/login.html"
                             } else {
                                 layer.alert('注册失败!', {
-                                    icon: 6
+                                    icon: 5
                                 });
                             }
                         }
                     })
                 } else {
                     layer.alert('格式错误', {
-                        icon: 5
+                        icon:5
                     });
                 }
             })
