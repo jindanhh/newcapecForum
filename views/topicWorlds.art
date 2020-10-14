@@ -11,15 +11,34 @@
 </head>
 
 <body>
-    <div class="login-top" style="background: #fff;">
-        <div class="head">
-            <a href="http://edu.newcapec.com.cn/">
-                <img src="/images/logo.png"></a>
-            <span>
-                · 帖子列表页
-            </span>
+    <nav>
+        <div class="box">
+            <a href="" class="logo">
+                <img alt="LOGO" src="/images/logo.png">
+                <span>· 论坛</span>
+            </a>
+            <div class="nav">
+                <ul class="clearfix">
+                    <li><a href="index">首页</a></li>
+                    <li><a href="askList">问答</a></li>
+                    <li><a href="membershipCardList">会员卡</a></li>
+                </ul>
+            </div>
+
+            <div class="head-search">
+                <form action="search" method="get">
+                    <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                    <input type="submit" class="sub-button">
+                </form>
+            </div>
+            <div class="menu">
+                <ul class="clearfix">  
+                    <li><a href="login.html">登录</a></li>
+                    <li><a href="reg.html">注册</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
     <div class="index_bg"></div>
     <div class="container">
         <div class="container row">

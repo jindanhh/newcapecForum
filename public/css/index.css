@@ -1,11 +1,4 @@
-
-.head img{
-    margin-top: 10px;
-}
-.head >span{
-    font-size: 40px;
-    font-weight: bold;
-}
+/* 定义 发布帖子按钮样式*/
 .put{
     margin-top: 60px;
     padding-bottom: 17px;
@@ -16,22 +9,7 @@
     width: 20px;
     margin-right: 10px;
 }
-
-.table tr:last-child{
-    border-bottom: 1px solid #ddd;
-}
-
-.service-content{
-    position: relative;
-}
-.service-content .btn{
-    margin-bottom: 10px;
-    position: relative;
-    left: 84%;
-    margin-top: -8px;
-    padding: 8px 35px;
-}
-
+/* 定义模块展示样式 （图片和文字）*/
 .thumbnail img{
     margin-top: 30px;
 }
@@ -43,4 +21,8 @@
 .caption a{
     padding: 8px 110px;
 }
+
+
+
+
 
