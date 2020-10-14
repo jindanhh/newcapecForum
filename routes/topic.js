@@ -17,22 +17,21 @@ function getVisitedCount(dbo, moduleId) {
 // 根据模块id查询所有帖子数据
 router.get("/queryAll/:moduleId", function (req, res) {
     var moduleId = req.params.moduleId;
-    // console.log('模块Id：' + moduleId);
-    // console.log(req.query)
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
-
-    // var topicId = req.params.topicId;
-    // topicId = topicId.substr(1, 24)
-    // console.log("帖子Id:", topicId);
+    var moduleArr;
+    // console.log(moduleId)
     // 每访问一次,就记录一次
     common.getMongoClient().then(async function (client) {
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
-
         // 查询总条目数
         var visitedCount = await getVisitedCount(dbo, moduleId);
-        // console.log(topicCount);
+        dbo.collection('topicModules').find({
+            _id: ObjectId(moduleId)
+        }).toArray(function (res,result) {
+            moduleArr = result
+        })
         dbo.collection('topicWorlds').find({
             topicModule: moduleId,
             topicStatus:0
@@ -41,17 +40,24 @@ router.get("/queryAll/:moduleId", function (req, res) {
             for (var i = 0; i < result.length; i++){
                 result[i]._id = result[i]._id.toString();
             }
-
+            // console.log("kkk"+result)
             // 结合populars.art渲染数据
                 res.render('topicWorlds.art', {
                     topiclist: result,
                     moduleId: moduleId,
                     pageNum: pageNum,
+                    moduleArr:moduleArr,
                     pageCount: visitedCount % pageSize == 0 ? visitedCount / pageSize : parseInt(visitedCount / pageSize) + 1
                 });
-            })
-       }) 
+                console.log(moduleArr)
+        })
+
+    }) 
+    
+
+       
 })
+
     
 // 新增帖子
 router.post('/addTopic', function (req, res) {

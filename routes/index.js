@@ -39,7 +39,8 @@ router.get("/", function (req, res) {
                 var obj = {
                     moduleName: topicModulesArr[i].moduleName,
                     topicModule:modId,
-                    topicWorlds: topicData
+                    topicWorlds: topicData,
+                    moduleImg:topicModulesArr[i].moduleImg
                 }
                 // console.log(obj)
                 topicModules.push(obj);

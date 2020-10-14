@@ -2,19 +2,19 @@ use newcapecForum
 
 db.topicModules.insert([
     {
-        moduleName:'UI设计'
+        moduleName:'UI设计',
+        moduleImg:''
     },{
         moduleName:'Java开发'
     },{
-        moduleName:'嵌入式开发'
+        moduleName:'嵌入式开发',
+        moduleImg:''
     },{
-        moduleName:'安卓开发'
+        moduleName:'安卓开发',
+        moduleImg:''
     },{
-        moduleName:'WEB前端开发'
-    },{
-        moduleName:'综合'
-    },{
-        moduleName:'全部'
+        moduleName:'WEB前端开发',
+        moduleImg:''
     }
 ])
 

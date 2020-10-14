@@ -1,9 +1,22 @@
 body{
     background: #FCFCFC;
 }
+body a:link{
+    text-decoration: none;
+}
+body a:visited{
+    text-decoration: none;
+}
+body a:hover{
+    text-decoration: none;
+}
+body a:active{
+    text-decoration: none;
+}
 footer{
     background:#F7F6F6;
     height: 80px;
+    user-select: none;
 }
 
 footer p {

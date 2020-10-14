@@ -6,17 +6,13 @@
     font-size: 40px;
     font-weight: bold;
 }
-
-.caption .btn-primary{
-    position: absolute;
-    right: 15%;
+.put{
+    margin-top: 60px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #eee;
 }
 
-.caption .btn-default{
-    margin: 0 4px;
-}
-
-.caption .btn-primary img{
+.btn-primary img{
     width: 20px;
     margin-right: 10px;
 }
@@ -34,5 +30,17 @@
     left: 84%;
     margin-top: -8px;
     padding: 8px 35px;
+}
+
+.thumbnail img{
+    margin-top: 30px;
+}
+
+.caption h3{
+    letter-spacing:6px;
+}
+
+.caption a{
+    padding: 8px 110px;
 }
 

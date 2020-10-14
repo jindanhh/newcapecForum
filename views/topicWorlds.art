@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>论坛-帖子列表页</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="/css/populars.css"> -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/topicWorlds.css">
 </head>
 
 <body>
@@ -20,79 +21,124 @@
         </div>
     </div>
     <div class="index_bg"></div>
+    <div class="container">
+        <div class="container row">
+            <div class="page-header col-sm-10">
+                
+                <h2>{{moduleArr[0].moduleName}}</h2>
+              
+            </div>
+            <div class="col-sm-2 put">
+                <a href="" class="btn btn-primary"><span><img src="/images/index/write.png" alt=""></span>发布帖子</a>
+            </div>
 
-    <div id="content" class="container">
-        {{each topiclist as topic}}
-        <div class="topic">
-            <div>
-                <a href="/topic/queryOne/{{topic._id}}">{{topic.topicTitle}}</a>
-            </div>
-            <div>
-                <a href=""><a href="">{{topic.Poster}}</a></a>
-            </div>
         </div>
-        {{/each}}
     </div>
-    <div id="pager">
-        <span>当前页: {{pageNum}} / {{pageCount}}</span>
-        <!-- 首页 -->
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=1&pageSize=2">首页</a>
+    <div class="container thumbnail">
+        <div id="content" class="caption">
+            {{each topiclist as topic}}
+            <div class="topic row">
+                <div class="col-sm-1">
+                    <a href="/topic/queryOne/{{topic._id}}">{{topic.poster}}</a>
+                </div>
+                <div class="col-sm-11">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <a href="/topic/{{topic._id}}" class="module">{{moduleArr[0].moduleName}}</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a href="/topic/queryOne/{{topic._id}}">{{topic.poster}}</a>
+                        </div>
+                        <div class="col-sm-9">
+                            <a href="/topic/queryOne/{{topic._id}}">发布时间:{{topic.topicTime}}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <a href="/topic/queryOne/{{topic._id}}">{{topic.topicTitle}}</a>
+                        </div>
+                        <div class="col-sm-2">
+                            <span><img src="/images/topic/visited.png" alt=""></span>
+                            <a href="/topic/queryOne/{{topic._id}}">{{topic.visitedCount}}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="/topic/queryOne/{{topic._id}}">{{topic.topicContent}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div id="pager">
+            <span class="btn btn-default">当前页: {{pageNum}} / {{pageCount}}</span>
+            <!-- 首页 -->
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=1&pageSize=2" class="btn btn-default">首页</a>
 
-        <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
-        {{if (pageNum != 1)}}
-        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum-1}}&pageSize=2">上一页</a>
-        {{/if}}
+            <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
+            {{if (pageNum != 1)}}
+            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum-1}}&pageSize=2" class="btn btn-default">上一页</a>
+            {{/if}}
 
-        <!-- 显示数值码 -->
-        <!-- 如果总页码小于等于5 -->
-        {{if (pageCount <= 5)}}
-        <% for(var i = 1; i <= pageCount; i++){ %>
-        <% if (i == pageNum) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
-        <% } else if (pageNum != i) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
-        <% } %>
-        <% } %>
-        {{/if}}
+            <!-- 显示数值码 -->
+            <!-- 如果总页码小于等于5 -->
+            {{if (pageCount <= 5)}}
+            <% for(var i = 1; i <= pageCount; i++){ %>
+            <% if (i == pageNum) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+                class="active btn btn-default"><%= i %></a>
+            <% } else if (pageNum != i) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <% } %>
+            <% } %>
+            {{/if}}
 
-        {{if (pageNum <= 3 && pageCount > 5) }}
-        <% for(var i = 1; i <= 5; i++){ %>
-        <% if (i == pageNum) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
-        <% } else if (pageNum != i) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
-        <% } %>
-        <% } %>
-        {{/if}}
+            {{if (pageNum <= 3 && pageCount > 5) }}
+            <% for(var i = 1; i <= 5; i++){ %>
+            <% if (i == pageNum) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+                class="active btn btn-default"><%= i %></a>
+            <% } else if (pageNum != i) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <% } %>
+            <% } %>
+            {{/if}}
 
-        {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
-        <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
-        <% if (i == pageNum) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
-        <% } else if (pageNum != i) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
-        <% } %>
-        <% } %>
-        {{/if}}
+            {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
+            <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
+            <% if (i == pageNum) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+                class="active btn btn-default"><%= i %></a>
+            <% } else if (pageNum != i) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <% } %>
+            <% } %>
+            {{/if}}
 
-        {{if (pageNum + 2 > pageCount && pageCount > 5)}}
-        <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
-        <% if (i == pageNum) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="active"><%= i %></a>
-        <% } else if (pageNum != i) { %>
-        <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"><%= i %></a>
-        <% } %>
-        <% } %>
-        {{/if}}
+            {{if (pageNum + 2 > pageCount && pageCount > 5)}}
+            <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
+            <% if (i == pageNum) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+                class="active btn btn-default"><%= i %></a>
+            <% } else if (pageNum != i) { %>
+            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <% } %>
+            <% } %>
+            {{/if}}
 
-        <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
-        {{if (pageNum != pageCount)}}
-        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum+1}}&pageSize=2">下一页</a>
-        {{/if}}
+            <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
+            {{if (pageNum != pageCount)}}
+            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum+1}}&pageSize=2" class="btn btn-default">下一页</a>
+            {{/if}}
 
-        <!-- 尾页 -->
-        <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageCount}}&pageSize=2">尾页</a>
+            <!-- 尾页 -->
+            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageCount}}&pageSize=2" class="btn btn-default">尾页</a>
+        </div>
     </div>
+    <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
+    </footer>
 </body>
 
 </html>

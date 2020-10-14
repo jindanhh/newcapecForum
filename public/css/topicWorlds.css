@@ -1,0 +1,57 @@
+.caption .row {
+    margin: 5px 0;
+}
+
+.caption .row:nth-child(2) {
+    padding: 10px 0 5px;
+}
+
+.topic {
+    border-bottom: 1px solid #ddd;
+}
+
+.topic>div {
+    padding: 20px 0;
+}
+
+/* .topic div[class="col-sm-1"]>a:first-child {
+    padding-left: 30px;
+} */
+
+.container div {
+    /* border: 1px solid black; */
+}
+
+.topic div[class="col-sm-2"] img {
+    width: 20px;
+}
+
+.topic div[class="col-sm-10"] a {
+    color: black;
+    font-size: 18px;
+}
+
+.topic a {
+    color: #8a8a8a;
+}
+
+.module {
+    padding: 2px 5px;
+    border: 1px solid #dfdfdf;
+}
+
+#pager {
+    padding: 8px 0;
+    margin-left: 65%;
+}
+
+.put {
+    margin-top: 60px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-primary img {
+    width: 20px;
+    margin-right: 10px;
+}
