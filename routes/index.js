@@ -32,17 +32,14 @@ router.get("/", function (req, res) {
             // 根据每个模块的_id去populars中查询对应的文档
             for (var i = 0; i < topicModulesArr.length; i++) {
                 var modName = topicModulesArr[i].topicName;
-                // console.log(modId)
                 // await 等待,等待异步执行完成
                 var topicData = await getTopicDataName(dbo, modName); 
-                // console.log(topicData)
                 var obj = {
                     moduleName: topicModulesArr[i].moduleName,
                     topicModule:topicModulesArr[i].modId,
                     topicWorlds: topicData,
                     moduleImg:topicModulesArr[i].moduleImg
                 }
-                console.log(obj)
                 topicModules.push(obj);
             }
             res.render('index.art', {

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>话题列表</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link href="dist/summernote.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="dist/summernote.js"></script>
+    <script src="dist/lang/summernote-zh-CN.js"></script> <!-- 中文-->
+    <style>
+        .newpop-table{
+            border-collapse: collapse;
+        }
+        .newpop-table td{
+            border: 1px solid #42a5f5;
+        }
+       .newpop-table tr>td:nth-child(1){
+            width: 20%;
+            text-align: right;
+            background: #ecf7fe;
+        }
+       .newpop-table tr>td:nth-child(2){
+            padding: 5px 20px;
+            width: 80%;
+            text-align: left;
+       }
+       .newpop-table .submitBtn button{
+            border: 1px solid #42a5f5;
+            background: #ecf7fe;
+            color: #42a5f5;
+            border-radius: 5px;
+            padding: 0px 15px;
+            height: 28px;
+            line-height: 25px;
+            margin: 5px auto;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>添加标签</h1>
+    <div class="header-btn" style="margin: 10px auto;">
+        <button><a href="/target/targetALL?pageSize=10&pageNum=1">返回</a></button>
+    </div>
+    <div id="content">
+        <table class="newpop-table">
+            <tbody class="t-list-tbody ">
+               
+                <tr>
+                    <td>标签名：</td>
+                    <td><input type="text" name="tagName" id="tagName" class="from-text"></td>
+                </tr>
+                <tr>
+                    <td class="submitBtn" colspan="2" style="text-align: center;">
+                        <button id="targetSubmit">提交</button>
+                    </td>
+                </tr>
+            </tbody>   
+            
+        </table>
+    </div>
+    
+    
+      <script>
+        $(function () {
+            $(".note-video-url").attr({
+                "type": "file",
+                name: "singleFile",
+                id: "singleFile"
+            });
+            $("#targetSubmit").click(function () {
+                var tagName = $("#tagName").val()
+              
+
+                $.ajax({
+                    url: "/newtarget/addTarget",
+                    method: "post",
+                    data: {
+                        moduleName: tagName,
+                        moduleStatus:0
+                    },
+                    success: function (data) {
+                        alert("添加成功")
+                        
+                        
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

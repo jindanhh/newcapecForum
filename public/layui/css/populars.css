@@ -1,0 +1,109 @@
+a:hover {
+    color: red;
+}
+body{
+    color: #333;
+}
+div.topic {
+    width: 95%;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #aaa;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+div.topic>div:nth-child(1) {
+    width: 80%;
+    float: left;
+    border-right: 1px solid #aaa;
+}
+
+div.topic>div:nth-child(2) {
+    width: 20%;
+    float: right;
+}
+
+#content>.topic:nth-child(even) {
+    background: #FFF8E7;
+}
+
+#pager {
+    width: 95%;
+    padding: 12px 0;
+    margin: 0 auto;
+    user-select: none;
+}
+
+#pager a {
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* #4E6EF2 */
+#pager a:hover {
+    background: #42a5f5;
+    color: white;
+}
+
+#pager .active {
+    background: #42a5f5;
+    color: white;
+}
+/* 表格样式 */
+#content table{
+    width: 90%;
+    margin: 10px auto 0;
+    border:  grey;
+    text-align: center;
+    background-color: #BFE3FF;
+}
+table thead{
+    color: #555;
+    border-color: inherit;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    background: linear-gradient(rgba(255,255,255,1) 0% ,rgba(239,244,247,1) 100%);
+}
+th{
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}
+.t-list-tbody{
+    background-color: #ffffff;
+    table-layout: fixed;
+    word-break: break-all;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tbody tr>td:nth-child(2){
+    width: 40%;
+}
+.t-list-tbody{
+    height: 30px;
+    line-height: 30px;
+}
+/* 顶部按钮 */
+body .header-btn{
+    width: 90%;
+   
+}
+.header-btn button{
+    border: 1px solid #42a5f5;
+    background: #ecf7fe;
+    color: #42a5f5;
+    border-radius: 5px;
+    padding: 0px 10px;
+    height: 28px;
+    line-height: 25px;
+}
+.header-btn button a{
+    color: #42a5f5;
+}

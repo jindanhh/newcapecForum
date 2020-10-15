@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>话题列表</title>
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    <script src="/layui/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>话题管理</h1>
+    <div class="header-btn" style="margin: 10px auto;">
+        <button><a href="/newpop.html">添加话题</a></button>
+        <button><a href="/remove/removeAll?pageSize=10&pageNum=1">回收站</a></button>
+        <button><a href="" id="del">删除</a></button>
+    </div>
+    <!-- <script>
+        $("#del").on("click",function(){
+            var checkStatus = j_cbAll,
+            // </script>
+        })
+    </script> -->
+    <div id="content">
+       
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" id="j_cbAll"></th>
+                    <th>标题</th>
+                    <th>时间</th>
+                    <th>帖子状态</th>
+                    <th>作者</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="t-list-tbody" id="j_tb">
+                {{each topiclist as topic}}
+                <tr class="topic">
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>
+                        <a href="">{{topic.topicTitle}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="">{{topic.topicTime}}</a>
+                    </td>
+                    <td>
+                        {{if ( topic.topicStatus == 0 )}}
+                        <span>已发布</span>
+                        {{/if}}
+                        <!-- <a href="">{{topic.topicStatus}}</a> -->
+                    </td>
+                    <td>
+                        <a href=""><a href="">{{topic.poster}}</a></a>
+                    </td>
+                    <td>
+                        <a href="/backTopic/renderTopic/{{topic._id}}">查看</a>
+                        <a href="/backTopic/delteTopicById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">删除</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+            
+        </table>
+
+    </div>
+    <div id="pager">
+        <span>当前页: {{pageNum}} / {{pageCount}}</span>
+        <!-- 首页 -->
+        <a href="/backTopic/queryAll?pageNum=1&pageSize=10">首页</a>
+
+        <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
+        {{if (pageNum != 1)}}
+        <a href="/backTopic/queryAll?pageNum={{pageNum-1}}&pageSize=10">上一页</a>
+        {{/if}}
+
+        <!-- 显示数值码 -->
+        <!-- 如果总页码小于等于5 -->
+        {{if (pageCount <= 5)}}
+        <% for(var i = 1; i <= pageCount; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum <= 3 && pageCount > 5) }}
+        <% for(var i = 1; i <= 5; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
+        <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        {{if (pageNum + 2 > pageCount && pageCount > 5)}}
+        <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
+        <% if (i == pageNum) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <% } else if (pageNum != i) { %>
+        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <% } %>
+        <% } %>
+        {{/if}}
+
+        <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
+        {{if (pageNum != pageCount)}}
+        <a href="/backTopic/queryAll?pageNum={{pageNum+1}}&pageSize=10">下一页</a>
+        {{/if}}
+
+        <!-- 尾页 -->
+        <a href="/backTopic/queryAll?pageNum={{pageCount}}&pageSize=10">尾页</a>
+    </div>
+    <script src="/layui/js/jquery.min.js"></script>
+    <script>
+        var j_cbAll = document.getElementById("j_cbAll");
+        var allCheckBox = document.querySelectorAll("#j_tb input[type=checkbox]");
+
+        var btn = document.getElementById("btn");
+
+      //全选全不选
+        j_cbAll.onclick = function () {
+            var j_cbAllVal = this.checked;
+            for (var i = 0; i < allCheckBox.length; i++) {
+                allCheckBox[i].checked = j_cbAllVal;
+            }
+        }
+
+        for (var i = 0; i < allCheckBox.length; i++) {
+            allCheckBox[i].onclick = function () {
+                checkAllCheckBox();
+            }
+        }
+
+
+        //都选中的话上边总的也选中
+        function  checkAllCheckBox(){
+            var isChecked = true; 
+
+            for (var j = 0; j < allCheckBox.length; j++) {
+                if (!allCheckBox[j].checked) {
+                    isChecked = false;
+                    break;
+                }
+            }
+
+            j_cbAll.checked = isChecked;
+        }
+    </script>
+    <script>
+        $(function () {
+            if ($("#content .topic").length == 0) {
+                location.href = $(".active").attr("href")
+            }
+        })
+    </script>
+</body>
+
+</html>

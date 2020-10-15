@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>话题列表</title>
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    <script src="/layui/js/jquery.min.js"></script>
+</head>
+<body>
+    
+    <h1>{{topiclist.topicTitle}}</h1>
+  
+   
+    <div>
+     {{topiclist.topicContent}}
+    </div>
+  
+    <script src="/layui/js/jquery.min.js"></script>
+   
+</body>
+
+</html>
