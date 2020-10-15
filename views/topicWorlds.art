@@ -7,50 +7,54 @@
     <title>论坛-帖子列表页</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/topicWorlds.css">
+    <link rel="stylesheet" href="/css/topic/topicWorlds.css">
 </head>
 
 <body>
-    <nav>
-        <div class="box">
-            <a href="" class="logo">
-                <img alt="LOGO" src="/images/logo.png">
-                <span>· 论坛</span>
-            </a>
-            <div class="nav">
-                <ul class="clearfix">
-                    <li><a href="index">首页</a></li>
-                    <li><a href="askList">问答</a></li>
-                    <li><a href="membershipCardList">会员卡</a></li>
-                </ul>
-            </div>
 
-            <div class="head-search">
-                <form action="search" method="get">
-                    <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                    <input type="submit" class="sub-button">
-                </form>
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 帖子列表</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="askList">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                        <input type="submit" class="sub-button">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li><a href="login.html">登录</a></li>
+                        <li><a href="reg.html">注册</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="menu">
-                <ul class="clearfix">  
-                    <li><a href="login.html">登录</a></li>
-                    <li><a href="reg.html">注册</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+
+    <!-- 内容主体部分 -->
     <div class="index_bg"></div>
     <div class="container">
         <div class="container row">
             <div class="page-header col-sm-10">
-                
                 <h2>{{moduleArr[0].moduleName}}</h2>
-              
             </div>
             <div class="col-sm-2 put">
-                <a href="" class="btn btn-primary"><span><img src="/images/index/write.png" alt=""></span>发布帖子</a>
+                <a href="/topic/posted" class="btn btn-primary" id="posted"><span><img src="/images/index/write.png"
+                            alt=""></span>发布帖子</a>
             </div>
-
         </div>
     </div>
     <div class="container thumbnail">
@@ -83,7 +87,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="/topic/queryOne/{{topic._id}}">{{topic.topicContent}}</a>
+                            <a href="/topic/queryOne/{{topic._id}}">{{topic.topicDes}}</a>
                         </div>
                     </div>
                 </div>
@@ -93,11 +97,11 @@
         <div id="pager">
             <span class="btn btn-default">当前页: {{pageNum}} / {{pageCount}}</span>
             <!-- 首页 -->
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=1&pageSize=2" class="btn btn-default">首页</a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=1&pageSize=5" class="btn btn-default">首页</a>
 
             <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
             {{if (pageNum != 1)}}
-            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum-1}}&pageSize=2" class="btn btn-default">上一页</a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageNum-1}}&pageSize=5" class="btn btn-default">上一页</a>
             {{/if}}
 
             <!-- 显示数值码 -->
@@ -105,10 +109,10 @@
             {{if (pageCount <= 5)}}
             <% for(var i = 1; i <= pageCount; i++){ %>
             <% if (i == pageNum) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
                 class="active btn btn-default"><%= i %></a>
             <% } else if (pageNum != i) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5" class="btn btn-default"><%= i %></a>
             <% } %>
             <% } %>
             {{/if}}
@@ -116,10 +120,10 @@
             {{if (pageNum <= 3 && pageCount > 5) }}
             <% for(var i = 1; i <= 5; i++){ %>
             <% if (i == pageNum) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
                 class="active btn btn-default"><%= i %></a>
             <% } else if (pageNum != i) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5" class="btn btn-default"><%= i %></a>
             <% } %>
             <% } %>
             {{/if}}
@@ -127,10 +131,10 @@
             {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
             <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
             <% if (i == pageNum) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
                 class="active btn btn-default"><%= i %></a>
             <% } else if (pageNum != i) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5" class="btn btn-default"><%= i %></a>
             <% } %>
             <% } %>
             {{/if}}
@@ -138,26 +142,37 @@
             {{if (pageNum + 2 > pageCount && pageCount > 5)}}
             <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
             <% if (i == pageNum) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2"
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
                 class="active btn btn-default"><%= i %></a>
             <% } else if (pageNum != i) { %>
-            <a href="/topic/queryAll/{{moduleId}}?pageNum=<%= i %>&pageSize=2" class="btn btn-default"><%= i %></a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5" class="btn btn-default"><%= i %></a>
             <% } %>
             <% } %>
             {{/if}}
 
             <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
             {{if (pageNum != pageCount)}}
-            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageNum+1}}&pageSize=2" class="btn btn-default">下一页</a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageNum+1}}&pageSize=5" class="btn btn-default">下一页</a>
             {{/if}}
 
             <!-- 尾页 -->
-            <a href="/topic/queryAll/{{moduleId}}?pageNum={{pageCount}}&pageSize=2" class="btn btn-default">尾页</a>
+            <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageCount}}&pageSize=5" class="btn btn-default">尾页</a>
         </div>
     </div>
+
+    <!-- 底部 -->
     <footer class="container-fluid">
         <p class="text-center">Powered by nodeJs... 联系我们</p>
     </footer>
+
+    <!-- 发帖时判断是否登录 -->
+    <script>
+        $(document).ready(
+            $("#posted").click(
+
+            )
+        )
+    </script>
 </body>
 
 </html>

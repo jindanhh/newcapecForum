@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛-发贴</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link href="/css/topic/topicPosted.css" rel="stylesheet" />
+    <link href="/dist/summernote.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/layer.js"></script>
+    <script src="/dist/summernote.js"></script>
+    <script src="/dist/lang/summernote-zh-CN.js"></script> <!-- 中文-->
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 发布帖子</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="askList">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+    
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                        <input type="submit" class="sub-button">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li><a href="login.html">登录</a></li>
+                        <li><a href="reg.html">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主体部分，帖子发布模块 -->
+    <div class="container">
+        <div class="m">
+            <h1>发布新帖:</h1>
+            <div class="row">
+                <div class="col-sm-3">
+                    <select class="form-control" id="moduleName">
+                        {{each topicModules as module index}}                        
+                            <option>{{module.moduleName}}</option>                                    
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group col-sm-9">
+                    <!-- <label for="inputPassword3" class="control-label ready-only"></label> -->
+                    <div>
+                        <input type="text" class="form-control" id="topicTitle" placeholder="请输入标题">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <!-- <label for="inputPassword3" class="control-label ready-only"></label> -->
+                    <div>
+                        <input type="text" class="form-control" id="topicDes" placeholder="请简单描述你要发布的内容">
+                    </div>
+                </div>
+            </div>
+            <div class="summernote"></div>
+            <button id="topicSubmit" class="btn btn-primary btn-post">提交</button>
+
+        </div>
+    </div>
+
+     <!-- 底部 -->
+     <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
+    </footer>
+
+    <!-- js部分 -->
+    <!-- 发帖模块样式 -->
+    <script>
+        $(function () {
+            $('.summernote').summernote({
+                height: 200,
+                tabsize: 2,
+                lang: 'zh-CN',
+                resize: 'none'
+            });
+        });
+    </script>
+
+    <!-- 数据上传 -->
+    <script>
+        $(function () {
+            $(".note-video-url").attr({
+                "type": "file",
+                name: "singleFile",
+                id: "singleFile"
+            });
+
+            $(".note-video-btn").click(function () {
+                var fileList = $('#singleFile')[0].files;
+                console.log(fileList);
+                // FormData它是用来异步文件上传的
+                var formData = new FormData();
+                //此处文件名必须为 singleFile ，因为后台设置仅接口此文件名
+                formData.append('singleFile', fileList[0]);
+
+                $.ajax({
+                    url: '/posted/single',
+                    type: 'post',
+                    // 不让jQuery去处理数据,而是让XMLHttpRequest去处理数据
+                    processData: false,
+                    contentType: false, //使用multer配合ajax时无需配置multipart/form-data，multer将自动配置，手动配置将报错，boundary not found
+                    data: formData,
+                    success: function (data) {
+                        console.log(data)
+                        $(".note-video-clip").attr("src", data.path);
+                    }
+                })
+            })
+
+            // 点击提交时数据上传
+            $("#topicSubmit").click(function () {
+                var time = new Date();
+                var y = time.getFullYear();
+                var m = time.getMonth();
+                var d = time.getDate();
+                var h = time.getHours();
+                var n = time.getMinutes();
+                var topicTime = y + "-" + (m + 1) + "-" + d + " " + h + ":" + n;
+                console.log(topicTime)
+                var submitHTML = $(".note-editable").html();
+                var topicTitle = $("#topicTitle").val();
+                var moduleName = $("#moduleName").val();
+                var topicDes = $('#topicDes').val();
+                // var topicTime = 
+                // console.log(submitHTML);
+               if(submitHTML != " "&&topicTitle != " "&&topicDes != " "){
+                $.ajax({
+                    url: "/topic/addTopic",
+                    method: "post",
+                    data: {
+                        topicTitle: topicTitle,
+                        topicDes:topicDes,
+                        topicContent: submitHTML,
+                        moduleName: moduleName,
+                        poster: "admin",
+                        topicTime: topicTime,
+                        topicStatus:0,
+                        visitedCount:0,
+                    },
+                    success: function (data) {
+                        layer.alert("发布成功,点击跳转查看当前模块(2s之后将自动跳转)")
+                        setTimeout('window.location.href = "/topic/queryAll/'+moduleName+'?pageNum=1&pageSize=5"', 2000);
+                    }
+                })
+               }else{
+                   layer.msg("尚有信息未填写，不能发布")
+               }
+            })
+        })
+    </script>
+</body>
+
+</html>

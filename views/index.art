@@ -7,41 +7,43 @@
     <title>论坛-首页</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/common.css">
-    <link href="/css/index.css" rel="stylesheet" type="text/css" />
+    <link href="/css/topic/index.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <nav>
-        <div class="box">
-            <a href="" class="logo">
-                <img alt="LOGO" src="/images/logo.png">
-                <span>· 论坛</span>
-            </a>
-            <div class="nav">
-                <ul class="clearfix">
-                    <li><a href="index">首页</a></li>
-                    <li><a href="askList">问答</a></li>
-                    <li><a href="membershipCardList">会员卡</a></li>
-                </ul>
-            </div>
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 论坛</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="index">首页</a></li>
+                        <li><a href="askList">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
 
-            <div class="head-search">
-                <form action="search" method="get">
-                    <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                    <input type="submit" class="sub-button">
-                </form>
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                        <input type="submit" class="sub-button">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li><a href="login.html">登录</a></li>
+                        <li><a href="reg.html">注册</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="menu">
-                <ul class="clearfix">  
-                    <li><a href="login.html">登录</a></li>
-                    <li><a href="reg.html">注册</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+        </nav>
+    </header>
+    <!-- 主体部分 -->
     <div class="index_bg">
-
     </div>
     <div class="container">
         <div class="container row">
@@ -49,9 +51,9 @@
                 <h2>帖子分类</h2>
             </div>
             <div class="col-sm-2 put">
-                <a href="" class="btn btn-primary"><span><img src="./images/index/write.png" alt=""></span>发布帖子</a>
+                <a href="/topic/posted" class="btn btn-primary"><span><img src="./images/index/write.png"
+                            alt=""></span>发布帖子</a>
             </div>
-
         </div>
         <div class="row">
             {{each topicModules as module index}}
@@ -60,15 +62,15 @@
                     <img src={{module.moduleImg}} alt="">
                     <div class="caption">
                         <h3>{{module.moduleName}}</h3>
-                        <p><a href="/topic/queryAll/{{module.topicModule}}?pageNum=1&pageSize=2"
+                        <p><a href="/topic/queryAll/{{module.moduleName}}?pageNum=1&pageSize=5"
                                 class="btn btn-primary">查看更多</a></p>
                     </div>
                 </div>
-
             </div>
             {{/each}}
         </div>
     </div>
+    <!-- 底部 -->
     <footer class="container-fluid">
         <p class="text-center">Powered by nodeJs... 联系我们</p>
     </footer>

@@ -23,213 +23,278 @@ db.topicModules.find()
 
 db.topicWorlds.insert([
     {
-        topicTitle : "UI设计小技巧",
-        topicContent: "功能极简主义......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
+        topicTitle : "Web前端常见问题汇总",
+        topicDes:"Web前端常见问题汇总",
+        topicContent: "<p>1.get 和post的区别</p><p>1.1数据传输大小：get 传输数据大小限制在1KB，post传输数据大小没有严格限制</p>
+        <p>1.2缓存和安全：get请求某个url，数据追加到url中发送（http的header传送），即浏览器将各个表单字段元素及其数据按照URL参数的格式附加在请求行中的资源路径后面，查看浏览器历史记录就可以看到用户数据，自然就不够安全，一些文件在访问的时候同时也被缓存了。post请求时浏览器把各表单字段元素及其数据作为HTTP消息的实体内容发送给Web服务器，而不是作为URL地址的参数进行传递，这样就无法轻易获取，相对安全，文件一般不会被缓存。</p>
+        <p>2.XSS（cross site script）跨站脚本攻击</p>
+        <p>XSS是指恶意攻击者利用网站没有对用户提交数据进行转义处理或者过滤不足的缺点，进而添加一些代码，嵌入到web页面中去。使别的用户访问都会执行相应的嵌入代码。</p>",        
+        poster:"admin",
+        topicTime:"2020-10-13 13:40",        
         topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36c"
-    },
-    {
-        topicTitle : "UI设计6大工具",
-        topicContent: "Sketch及插件-矢量绘图软件......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36c"
-    },
-    {
-        topicTitle : "UI设计理念",
-        topicContent: "设计价值观：......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36c"
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:0
     },{
-        topicTitle : "UI设计总结",
-        topicContent: "平面设计基础：......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
+        topicTitle : "WEB前端基础知识汇总",
+        topicDes:"基础知识汇总",
+        topicContent: "<p>javascript: JavaScript中如何检测一个变量是一个String类型？请写出函数实现</p>
+        <p>typeof(obj) === "string"</p>
+        <p>typeof obj === "string"</p>
+        <p>obj.constructor === String</p>
+        <p>请用js去除字符串空格？</p>
+        <p>方法一：使用replace正则匹配的方法</p>
+        <p>去除所有空格: str = str.replace(/\s*/g,"");   </p>
+        <p>方法二：使用str.trim()方法</p>
+        <p>str.trim()局限性：无法去除中间的空格</p>
+        <p>方法三：使用jquery,$.trim(str)方法</p>
+        <p>$.trim(str)局限性：无法去除中间的空格</p>",        
+        poster:"admin",
+        topicTime:"",        
         topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36c"
-    }
-])
-
-
-
-db.topicWorlds.insert([
-    {
-        topicTitle : "Java语言入门",
-        topicContent: "快速掌握Java的基本语法，建立对Java编程的基本认识......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36d"
-    },
-    {
-        topicTitle : "java中的前++和后++",
-        topicContent: "前++是先自加再使用而后++是先使用再自加......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36d"
-    },
-    {
-        topicTitle : "Java学习的正确打开方式",
-        topicContent: "在博主认为，对于入门级学习java的最佳学习方法莫过于视频+博客+书籍+总结，前三者博主将淋漓尽致地挥毫于这篇博客文章中......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36d"
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:1
     },{
-        topicTitle : "Java学习网站推荐",
-        topicContent: "动力节点：http://www.bjpowernode.com/video.htm......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
+        topicTitle : "WEB前端开发学习5大网站，你用过几个？",
+        topicDes:"WEB前端开发网站",
+        topicContent: "<p>一、前端视频教程-51自学网</p><p>二、前端图文教程-W3Cschool</p><p>三、前端APP-前端学院</p><p>四、前端笔记-QDfuns</p><p>五、前端社区-github</p>",        
+        poster:"admin",
+        topicTime:"",        
         topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36d"
-    }
-])
-
-db.topicWorlds.insert([
-    {
-        topicTitle : "什么是嵌入式开发？嵌入式是什么？",
-        topicContent: "嵌入式技术是以应用为中心，以计算机技术为基础，并且软硬件可裁剪，适用于应用系统对功能、可靠性、成本、体积、功耗有严格要求的专用计算机系统技术。......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36e"
-    },
-    {
-        topicTitle : "嵌入式Linux开发流程",
-        topicContent: "一、建立开发环境，二、配置开发主机......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36e"
-    },
-    {
-        topicTitle : "嵌入式开发经典网站",
-        topicContent: "1. OpenHardware developer site 2. SiliconPenguin.com ......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36e"
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:2
     },{
-        topicTitle : "如何分分钟成为Java嵌入式开发人员",
-        topicContent: "用Java开发下一代嵌入式产品......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36e"
-    }
-])
-
-db.topicWorlds.insert([
-    {
-        topicTitle : "2018年的安卓开发环境搭建",
-        topicContent: "安装Android Studio，设置环境变量......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36f"
-    },
-    {
-        topicTitle : "安卓开发——登录界面",
-        topicContent: "项目功能需求......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36f"
-    },
-    {
-        topicTitle : "安卓开发必学书籍",
-        topicContent: "C语言\Android+移植技术......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36f"
+        topicTitle : "web前端开发—HTML基础",
+        topicDes:"HTML基础",
+        topicContent: "<p>什么是HTML？</p><p>HTML 指的是超文本标记语言 (Hyper Text Markup Language)</p><p>HTML 不是一种编程语言，而是一种标记语言 (markup language)</p><p>标记语言是一套标记标签 (markup tag)</p><p>HTML 使用标记标签来描述网页</p>",        
+        poster:"admin",
+        topicTime:"",        
+        topicStatus:0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:3
     },{
-        topicTitle : "Android开发--实现输入密码连接WIFI",
-        topicContent: "project中简单实现了连接WIFi的功能，首次连接WIFI信号时，可以输入密码并保存，第二次可以直接连接。......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
         topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa36f"
-    }
-])
-
-db.topicWorlds.insert([
-    {
-        topicTitle : "快速入门Web前端开发",
-        topicContent: "入门标准很简单，就一条：达到能参与 Web 前端实际项目的开发水平......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa370"
-    },
-    {
-        topicTitle : "入门标准很简单，就一条：达到能参与 Web 前端实际项目的开发水平",
-        topicContent: "一、前端视频教程-51自学网......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa370"
-    },
-    {
-        topicTitle : "web前端开发前景",
-        topicContent: "web前端开发的必经之路：HTMI→CSS→JAVASCRIPT......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
-        topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa370"
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:4
     },{
-        topicTitle : "Web前端开发工具",
-        topicContent: " 1、HBuilder、HBuilderX，2、Editplus......",
-        visitedCount: 10,
-        Poster:"admin",
-        topicTime:"2020-10-13 13:40",
-        topicReply:['test1','test2'],
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
         topicStatus: 0 ,
-        topicModule:"5f853cbad80618fefb9fa370"
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:5
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:6
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:7
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:8
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"",
+        topicReply:[],
+        visitedCount:9
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:10
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:11
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:12
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:13
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:14
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:15
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:16
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:17
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:18
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:19
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:20
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:21
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:22
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:23
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:24
+    },{
+        topicTitle : "",
+        topicDes:"",
+        topicContent: "",        
+        poster:"",
+        topicTime:"",        
+        topicStatus: 0 ,
+        moduleName:"UI设计",
+        topicReply:[],
+        visitedCount:25
     }
 ])
 

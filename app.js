@@ -4,10 +4,11 @@ const path = require('path');
 // 引入路由
 const index = require('./routes/index');
 const topic = require('./routes/topic');
-const question = require('./routes/question')
+const posted  = require('./routes/posted');
 
 // 静态资源托管
 app.use(express.static("public"))
+app.use(express.static('posteds'))
 
 // 渲染引擎设置
 app.engine('art', require('express-art-template'));
@@ -28,7 +29,7 @@ app.use(express.urlencoded({
 app.use('/', index);
 app.use('/index', index);
 app.use('/topic', topic);
-app.use('/question', question);
+app.use('/posted', posted);
 
 app.listen(3000, () => {
     console.log(`Example app listening on port 3000!`)

@@ -4,10 +4,10 @@ var router = express.Router()
 const common = require("../modules/common");
 
 
-function getTopicDataById(dbo, modId) {
+function getTopicDataName(dbo, modName) {
     return new Promise(function (resolve, reject) {
         dbo.collection("topicWorlds").find({
-            topicModule: modId
+            topicName: modName
         }).sort({
             count: -1
         }).limit(4).toArray(function (err, topicResult) {
@@ -31,18 +31,18 @@ router.get("/", function (req, res) {
             var topicModulesArr = result;
             // 根据每个模块的_id去populars中查询对应的文档
             for (var i = 0; i < topicModulesArr.length; i++) {
-                var modId = topicModulesArr[i]._id.toString();
+                var modName = topicModulesArr[i].topicName;
                 // console.log(modId)
                 // await 等待,等待异步执行完成
-                var topicData = await getTopicDataById(dbo, modId); 
+                var topicData = await getTopicDataName(dbo, modName); 
                 // console.log(topicData)
                 var obj = {
                     moduleName: topicModulesArr[i].moduleName,
-                    topicModule:modId,
+                    topicModule:topicModulesArr[i].modId,
                     topicWorlds: topicData,
                     moduleImg:topicModulesArr[i].moduleImg
                 }
-                // console.log(obj)
+                console.log(obj)
                 topicModules.push(obj);
             }
             res.render('index.art', {

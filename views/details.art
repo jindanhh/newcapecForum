@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛-帖子详情页</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link href="/css/topic/topicDetails.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 帖子详情</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="askList">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                        <input type="submit" class="sub-button">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li><a href="login.html">登录</a></li>
+                        <li><a href="reg.html">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 内容主体部分 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                {{each topiclist as topic}}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="thumbnail details">
+                            <span class="btn btn-default">{{topic.moduleName}}</span>
+                            <h3>{{topic.topicTitle}}</h3>
+                            <p>{{topic.topicTime}}<span><img src="/images/topic/visited.png"
+                                        alt="浏览量">{{topic.visitedCount}}浏览量</span></p>
+                            <div class="caption">
+                                {{#topic.topicContent}}
+                            </div>
+                            <div class="text-center">
+                                <a class="btn btn-primary">收藏</a>
+                                <a class="btn btn-primary">赞</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="thumbnail reply">
+                            <div class="row">
+                                <div class="col-sm-2 text-center">
+                                    <img src="/images/topic/user.png" alt="用户头像" class="img-circle">
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <p>{{topic.poster}}</p>
+                                        <p>{{topic.topicTime}}</p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="caption">
+                                {{topic.topicReply}}
+                            </div>
+                            <div class="tools">
+                                <ul>
+                                    <a href="">回复</a>|<a href="">引用</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    {{each topiclist as topic}}
+                    <div class="col-sm-12 text-center">
+                        <div class="thumbnail users">
+                            <img src="/images/topic/user.png" alt="用户头像" class="img-circle">
+                            <a href="">{{topic.poster}}</a>
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>{{topic.visitedCount}}</p>
+                                        <p>回答</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>{{topic.visitedCount}}</p>
+                                        <p>粉丝</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>{{topic.visitedCount}}</p>
+                                        <p>关注</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button class="btn btn-primary">关注</button>
+                                    <button class="btn btn-default">发私信</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="thumbnail adv">
+                            <p>相关话题</p>
+                            <div class="caption">
+                                <ul>
+                                    {{each topiclist as topic}}
+                                    <li><a href="">{{topic.topicTitle}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
+    </footer>
+
+</body>
+
+</html>
