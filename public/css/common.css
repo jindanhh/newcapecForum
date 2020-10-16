@@ -190,3 +190,7 @@ nav .box .head-search form input.sub-button {
 	margin: 0px;
 	background: url(../images/search.png) no-repeat center;
 }
+
+nav .box .logo span{
+	color: #8A8A8A;
+}

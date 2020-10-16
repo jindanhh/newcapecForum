@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新开普教育论坛-帖子列表页</title>    
+    <title>新开普教育论坛-帖子列表页</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/common.css">
@@ -39,15 +39,15 @@
                     <ul class="clearfix">
                         <li>
                             <div class="author" id="uphoto">
-                                <!-- <a href="/topicList.html"> -->
-                                <!-- <img src="/images/users/14.jpg"> -->
-                                <!-- </a> -->
+                                <a href="/topicList.html">
+                                    <img src="/images/users/portrait1.jpg">
+                                </a>
                             </div>
                         </li>
                         <li><a href="#" id="welcome"></a></li>
                         <li><a href="/userCenter" id="user">用户中心</a></li>
-                        <li><a href="login.html" id="login">登录</a></li>
-                        <li><a href="reg.html" id="reg">注册</a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
                         <li><a href="#" class="exit" id="exit"></a></li>
                     </ul>
                 </div>
@@ -69,13 +69,13 @@
                 </div>
             </div>
         </div>
+        <!-- 帖子列表 -->
         <div class="container thumbnail">
             <div id="content" class="caption">
                 {{each topiclist as topic}}
-                {{each userArr as user}}
                 <div class="topic row">
                     <div class="col-sm-1">
-                       <img src={{user.userImg}} alt="用户头像" class="img-circle">
+                        <img src={{topic.userInfo.userImg}} alt="用户头像" class="img-circle">
                     </div>
                     <div class="col-sm-11">
                         <div class="row">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                {{/each}}
+
                 {{/each}}
             </div>
             <div id="pager">
@@ -189,46 +189,9 @@
     <!-- js部分 -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/comm/comm.js"></script>
+    <script src="/js/comm/judge.js"></script>
     <script>
-        window.onload = function () {
-            if (localStorage.getItem("userTel")) {
-                var userTel = document.getElementById("login");
-                var userName = localStorage.getItem("userName");
-                console.log(userName)
-                userTel.innerHTML = "欢迎&nbsp;" + localStorage.getItem("userName");
-                $("#uphoto").css("display", "block");
-                $("#user").css("display", "block");
-                $("#reg").css("display", "none");
-                $("#exit").html("退出")
-                if (localStorage.getItem("userImg")) {
-                    // var imgBox = document.getElementById("img-box");
-                    var uphoto = document.getElementById("uphoto");
-                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                }
-            }
-
-            var userName = localStorage.getItem("userName");
-            console.log(userName)
-            $.ajax({
-                url: "/userTalk/queryAllTopic",
-                method: "get",
-                data: {
-                    userName: localStorage.getItem("userName")
-                },
-                success: function (data) {
-                    // console.log(localStorage.getItem("userName"))
-                }
-            })
-
-        }
-
-
-
-        $("#exit").click(function () {
-            window.localStorage.clear();
-            location.reload();
-        })
+       
     </script>
 </body>
 

@@ -45,8 +45,8 @@
                         </li>
                         <li><a href="#" id="welcome"></a></li>
                         <li><a href="/userCenter" id="user">用户中心</a></li>
-                        <li><a href="login.html" id="login">登录</a></li>
-                        <li><a href="reg.html" id="reg">注册</a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
                         <li><a href="#" class="exit" id="exit"></a></li>
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
                 <h2>帖子分类</h2>
             </div>
             <div class="col-sm-2 put">
-                <a href="/topic/posted" class="btn btn-primary"><span><img src="./images/index/write.png"
+                <a href="/topic/posted" class="btn btn-primary" id="posted"><span><img src="./images/index/write.png"
                             alt=""></span>发布帖子</a>
             </div>
         </div>
@@ -88,48 +88,8 @@
 
     <!-- js部分 -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/comm/comm.js"></script>
-    <script>
-        window.onload = function () {
-            if (localStorage.getItem("userTel")) {
-                var userTel = document.getElementById("login");
-                var userName = localStorage.getItem("userName");
-                console.log(userName)
-                userTel.innerHTML = "欢迎&nbsp;" + localStorage.getItem("userName");
-                $("#uphoto").css("display", "block");
-                $("#user").css("display", "block");
-                $("#reg").css("display", "none");
-                $("#exit").html("退出")
-                if (localStorage.getItem("userImg")) {
-                    // var imgBox = document.getElementById("img-box");
-                    var uphoto = document.getElementById("uphoto");
-                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                }
-            }
-
-            var userName = localStorage.getItem("userName");
-            console.log(userName)
-            $.ajax({
-                url: "/userTalk/queryAllTopic",
-                method: "get",
-                data: {
-                    userName: localStorage.getItem("userName")
-                },
-                success: function (data) {
-                    // console.log(localStorage.getItem("userName"))
-                }
-            })
-
-        }
-
-
-
-        $("#exit").click(function () {
-            window.localStorage.clear();
-            location.reload();
-        })
-    </script>
+    <script src="js/comm/comm.js"></script>    
+    <script src="/js/comm/judge.js"></script>
 </body>
 
 </html>

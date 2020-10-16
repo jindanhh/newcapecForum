@@ -13,6 +13,18 @@ function getVisitedCount(dbo, moduleName) {
     return visitedCount;
 }
 
+function getUserByUserName(dbo,userName) {
+    return new Promise(function (resovle,reject) {
+        dbo.collection("users").find({
+            userName:userName
+        }).toArray(function (err2, result) {
+            // var userArr = result;
+            result[0]._id = result[0]._id.toString();
+            resovle(result[0])
+        })
+    })
+}
+
 // 根据模块name查询所有帖子数据
 router.get("/queryAll/:moduleName", function (req, res) {
     var moduleName = req.params.moduleName;
@@ -34,25 +46,26 @@ router.get("/queryAll/:moduleName", function (req, res) {
             moduleName: moduleName,
             $or:[{topicStatus: 0},{topicStatus:"0"}]
             
-        }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
+        }).skip(skipValue).limit(pageSize).toArray(async function (err, result) {
+           
             // 处理帖子id            
             for (var i = 0; i < result.length; i++){
-                result[i]._id = result[i]._id.toString();               
+                result[i]._id = result[i]._id.toString();  
+                var userInfo = await getUserByUserName(dbo, result[i].poster);
+                result[i].userInfo = userInfo;
+                
             }
+           
             var topiclist = result;
-            dbo.collection("users").find({
-            }).toArray(function (err2, result) {
-                var userArr = result;
-                // 结合topicWorlds.art渲染数据 
-                res.render('topicWorlds.art', {
-                    topiclist: topiclist,
-                    moduleName: moduleName,
-                    pageNum: pageNum,
-                    moduleArr: moduleArr,                    
-                    userArr: userArr,
-                    pageCount: visitedCount % pageSize == 0 ? visitedCount / pageSize : parseInt(visitedCount / pageSize) + 1
-                });
-            })
+            var resData = {
+                topiclist: topiclist,
+                moduleName: moduleName,
+                pageNum: pageNum,
+                moduleArr: moduleArr,                    
+                pageCount: visitedCount % pageSize == 0 ? visitedCount / pageSize : parseInt(visitedCount / pageSize) + 1
+            }
+            // res.json(topiclist)
+            res.render('topicWorlds.art', resData);
                        
         })
 
@@ -139,14 +152,18 @@ router.get('/queryOne/:topicId', function (req, res) {
             _id: ObjectId(topicId)
         }).toArray(function (err1, result) {
             topiclist = result;
+            var replyList = topiclist[0].topicReply;
+            var replyListLength = replyList.length;
+            // console.log(replyListLength)
             dbo.collection("users").find({
                 userName : topiclist[0].poster
             }).toArray(function (err2, result) {
                 var userArr = result;
                 res.render('details.art', {
                     topiclist: topiclist,
+                    replyList: replyList,
+                    replyListLength: replyListLength,
                     userArr: userArr
-                   
                 });
             })
         });

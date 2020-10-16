@@ -49,6 +49,7 @@
     margin: 20px auto;
     width: 90px;
     height: 90px;
+    border: 1px solid #8A8A8A;
 }
 /* 用户名称 */
 .users a{
@@ -91,5 +92,26 @@
 }
 
 .reply .tools{
-    margin-left: 85%;
+    /* margin-left: 85%; */
+    text-align: right;
+    padding: 5px 0;
 }
+.reply .tools:not(:last-child){
+    border-bottom: 1px solid #F1F1F1;
+}
+.reply .tools a{
+    color: #8A8A8A;
+    padding: 0 10px;
+}
+.reply .tools a:first-child{
+    border-right: 1px solid #8A8A8A;
+}
+
+.reply .caption{
+    background-color: #F5F5F5;
+}
+
+#replyContent{
+    display: none;
+}
+

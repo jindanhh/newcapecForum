@@ -19,7 +19,7 @@
             <div class="box">
                 <a href="" class="logo">
                     <img alt="LOGO" src="/images/logo.png">
-                    <span>· 发布帖子</span>
+                    <span>· 论坛</span>
                 </a>
                 <div class="nav">
                     <ul class="clearfix">
@@ -32,17 +32,27 @@
                 <div class="head-search">
                     <form action="search" method="get">
                         <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                        <input type="submit" class="sub-button">
+                        <!-- <input type="submit" class="sub-button"> -->
                     </form>
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
-                        <li><a href="login.html">登录</a></li>
-                        <li><a href="reg.html">注册</a></li>
+                        <li>
+                            <div class="author" id="uphoto">
+                                <a href="/topicList.html">
+                                    <img src="/images/users/portrait1.jpg">
+                                </a>
+                            </div>
+                        </li>
+                        <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/userCenter" id="user">用户中心</a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
+                        <li><a href="#" class="exit" id="exit"></a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>    
     </header>
 
     <!-- 主体部分，帖子发布模块 -->
@@ -87,7 +97,8 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/layer.js"></script>
-    <script src="/dist/summernote.js"></script>
+    <script src="/dist/summernote.js"></script>    
+    <script src="/js/comm/judge.js"></script>
     <script src="/dist/lang/summernote-zh-CN.js"></script> <!-- 中文-->
     <!-- 发帖模块样式 -->
     <script>
@@ -146,6 +157,7 @@
                 var topicTitle = $("#topicTitle").val();
                 var moduleName = $("#moduleName").val();
                 var topicDes = $('#topicDes').val();
+                var userName = localStorage.getItem("userName")
                 // var topicTime = 
                 // console.log(submitHTML);
                if(submitHTML != " "&&topicTitle != " "&&topicDes != " "){
@@ -157,7 +169,7 @@
                         topicDes:topicDes,
                         topicContent: submitHTML,
                         moduleName: moduleName,
-                        poster: "admin",
+                        poster: userName,
                         topicTime: topicTime,
                         topicStatus:0,
                         visitedCount:0,
