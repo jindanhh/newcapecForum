@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>论坛-帖子列表页</title>
+    <title>论坛-帖子列表页</title>    
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/topic/topicWorlds.css">
@@ -186,7 +187,7 @@
         <p class="text-center">Powered by nodeJs... 联系我们</p>
     </footer>
 
-    <!-- 发帖时判断是否登录 -->
+    <!-- js部分 -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/comm.js"></script>
     <script>

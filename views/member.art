@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>话题列表</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
     <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
-    <script src="/layui/js/jquery.min.js"></script>
-    <script src="/layui/js/layer.js"></script>
-    <!-- <script src="/layui/js/checkbox.js"></script> -->
 </head>
 <body>
     <h1>会员列表</h1>
@@ -125,6 +123,10 @@
         <!-- 尾页 -->
         <a href="/member/memAll?pageNum={{pageCount}}&pageSize=10">尾页</a>
     </div>
+
+    <!-- js部分 -->
+    <script src="/layui/js/jquery.min.js"></script>
+    <script src="/layui/js/layer.js"></script>
     <script>
         var j_cbAll = document.getElementById("j_cbAll");
         var allCheckBox = document.querySelectorAll("#j_tb input[type=checkbox]");
@@ -142,8 +144,6 @@
                 checkAllCheckBox();
             }
         }
-
-
         //都选中的话上边总的也选中
         function  checkAllCheckBox(){
             var isChecked = true; 

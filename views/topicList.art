@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户话题</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/userList.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -206,6 +207,7 @@
         <p class="text-center">Powered by nodeJs... 联系我们</p>
     </footer>
 
+    <!-- js部分 -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/comm.js"></script>
     <script>
