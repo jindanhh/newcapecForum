@@ -11,7 +11,7 @@ function getTopicCount(dbo) {
 // 定义topicList路由
 router.get("/queryAllTopic", function (req, res) {
     // 获取得到页码和每页显示的条目数
-    // console.log(req.query);
+    console.log(req.query);
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
