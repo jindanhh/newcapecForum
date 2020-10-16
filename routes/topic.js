@@ -146,6 +146,7 @@ router.get('/queryOne/:topicId', function (req, res) {
                 res.render('details.art', {
                     topiclist: topiclist,
                     userArr: userArr
+                   
                 });
             })
         });
