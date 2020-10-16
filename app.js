@@ -14,6 +14,13 @@ const memberDel = require('./routes/memberDel');
 const target = require('./routes/target');
 const newtarget = require('./routes/newtarget');
 
+
+// 用户
+const topicList = require('./routes/topicList')
+const userTalk = require('./routes/userTalk')
+const userCenter = require('./routes/userCenter')
+const modify = require('./routes/modify')
+
 // 引入路由
 const index = require('./routes/index');
 const topic = require('./routes/topic');
@@ -44,6 +51,12 @@ app.use('/', index);
 app.use('/index', index);
 app.use('/topic', topic);
 app.use('/posted', posted);
+
+// 用户
+app.use('/topicList', topicList)
+app.use('/userTalk', userTalk)
+app.use('/userCenter', userCenter)
+app.use('/modify', modify)
 
 // 加载后台路由模块
 app.use('/backTopic',backTopic)

@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>论坛</title>
-    <link rel="stylesheet" href="css/userCenter.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/userCenter.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+
 </head>
 
 <body>
@@ -14,12 +17,12 @@
     <nav>
         <div class="box">
             <a href="" class="logo">
-                <img alt="LOGO" src="images/logo.png">
+                <img alt="LOGO" src="/images/logo.png">
                 <span>· 论坛</span>
             </a>
             <div class="nav">
                 <ul class="clearfix">
-                    <li><a href="index">首页</a></li>
+                    <li><a href="/">首页</a></li>
                     <li><a href="askList">问答</a></li>
                     <li><a href="membershipCardList">会员卡</a></li>
                 </ul>
@@ -28,17 +31,29 @@
             <div class="head-search">
                 <form action="search" method="get">
                     <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                    <input type="submit" class="sub-button">
+                    <!-- <input type="submit" class="sub-button"> -->
                 </form>
             </div>
             <div class="menu">
-                <ul class="clearfix">  
-                    <li><a href="login.html">登录</a></li>
-                    <li><a href="reg.html">注册</a></li>
+                <ul class="clearfix">
+                    <li>
+                        <div class="author" id="uphoto">
+                            <a href="/topicList.html">
+                                <!-- <img src="/images/users/14.jpg"> -->
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#" id="welcome"></a></li>
+                    <li><a href="#" id="user">用户中心</a></li>
+                    <li><a href="login.html" id="login">登录</a></li>
+                    <li><a href="reg.html" id="reg">注册</a></li>
+                    <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
     <!-- 中间的小模块 -->
     <div class="skeleton">
@@ -47,13 +62,13 @@
                 <div class="avatarRing"></div>
                 <div class="inner clearfix">
                     <div class="avatar">
-                        <div class="img-box">
-                            <img src="images/14.jpg">
+                        <div class="img-box" id="img-box">
+
                         </div>
                         <div class="counts clearfix">
                             <div class="point">
                                 <div class="num">
-                                    285
+                                    {{}}
                                 </div>
                                 <div class="sub">积分</div>
                             </div>
@@ -62,22 +77,6 @@
                                 <div class="sub">粉丝</div>
                                 <input type="hidden" id="_userName" value="test" />
                             </div>
-                            <!-- <script language="javascript" type="text/javascript">
-                                //查询粉丝总数
-                                function queryFollowerCount() {
-                                    //获取用户名称
-                                    var userName = document.getElementById("_userName").value;
-                                    get_request(function (value) {
-                                        if (value != "") {
-                                            var data = JSON.parse(value);
-                                            document.getElementById("followerCount").innerHTML = data;
-                                        }
-                                    },
-                                        "queryFollowerCount.htm?userName=" + userName + "&timestamp=" + new Date().getTime(), true);
-                                }
-                                queryFollowerCount();
-                            </script> -->
-
                         </div>
                     </div>
                     <div class="head-line">
@@ -99,27 +98,29 @@
             <div class="selfService clearfix">
                 <div class="box">
                     <ul class="ul">
-                        <li class="item">
-                            <a class="a-pic" href="user/control/topicList">
-                                <img src="images/话题.png" alt="">
-                            </a>
-                            <h4 class="title">
-                                <a class="a-title" href="user/control/topicList">我的话题</a>
-                            </h4>
-                        </li>
+                        <a href="/topicList">
+                            <li class="item">
+                                <a class="a-pic" href="/userTalk/queryAllTopic?pageNum=1&pageSize=5">
+                                    <img src="/images/users/话题.png" alt="">
+                                </a>
+                                <h4 class="title">
+                                    <a class="a-title" href="/userTalk/queryAllTopic?pageNum=1&pageSize=5">我的话题</a>
+                                </h4>
+                            </li>
+                        </a>
 
                         <li class="item">
-                            <a class="a-pic" href="user/control/topicList">
-                                <img src="images/question.png" alt="">
+                            <a class="a-pic" href="/userTalk/queryAll/">
+                                <img src="/images/users/question.png" alt="">
                             </a>
                             <h4 class="title">
-                                <a class="a-title" href="user/control/questionList">我的提问</a>
+                                <a class="a-title" href="/userTalk/queryAll/">我的提问</a>
                             </h4>
                         </li>
 
                         <li class="item">
                             <a class="a-pic" href="user/control/commentList">
-                                <img src="images/message.png" alt="">
+                                <img src="/images/users/message.png" alt="">
                             </a>
                             <h4 class="title">
                                 <a class="a-title" href="user/control/commentList">我的评论</a>
@@ -128,7 +129,7 @@
 
                         <li class="item">
                             <a class="a-pic" href="user/control/favoriteList">
-                                <img src="images/collection.png" alt="">
+                                <img src="/images/users/collection.png" alt="">
                             </a>
                             <h4 class="title">
                                 <a class="a-title" href="user/control/favoriteList">收藏夹</a>
@@ -136,17 +137,17 @@
                         </li>
 
                         <li class="item">
-                            <a class="a-pic" href="user/control/followList">
-                                <img src="images/modify.png" alt="">
+                            <a class="a-pic" href="/modify">
+                                <img src="/images/users/modify.png" alt="">
                             </a>
                             <h4 class="title">
-                                <a class="a-title" href="user/control/followList">修改个人资料</a>
+                                <a class="a-title" href="/modify">修改个人资料</a>
                             </h4>
                         </li>
 
                         <li class="item">
                             <a class="a-pic" href="user/control/followerList">
-                                <img src="images/fans.png" alt="">
+                                <img src="/images/users/fans.png" alt="">
                             </a>
                             <h4 class="title">
                                 <a class="a-title" href="user/control/followerList">粉丝</a>
@@ -155,7 +156,7 @@
 
                         <li class="item">
                             <a class="a-pic" href="user/control/point">
-                                <img src="images/integral.png" alt="">
+                                <img src="/images/users/integral.png" alt="">
                             </a>
                             <h4 class="title">
                                 <a class="a-title" href="user/control/point">积分日志</a>
@@ -164,7 +165,7 @@
 
                         <li class="item">
                             <a class="a-pic" href="user/control/systemNotifyList">
-                                <img src="images/notice.png" alt="">
+                                <img src="/images/users/notice.png" alt="">
                             </a>
                             <h4 class="title">
                                 <a class="a-title" href="user/control/systemNotifyList">
@@ -176,22 +177,39 @@
                     </ul>
                 </div>
             </div>
-            
-            <!-- <input type="hidden" id="commonPath" value="common/default/pc/" />
-            是否登录
-            <input type="hidden" id="unhide_isLogin" value="true"> -->
         </div>
     </div>
 
-    <footer>
-        <div class="copyright">Powered by <a target="_blank" href="http://edu.newcapec.com.cn/"
-                class="link">newcapec</a>
-            <span> 联系我们</span>
-        </div>
+    <!-- 底部 -->
+    <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
     </footer>
 
-<!-- <script src="../routes/userCenter.js"></script> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script>
+        window.onload = function () {
+            if (localStorage.getItem("userTel")) {
+                var userTel = document.getElementById("login");
+                userTel.innerHTML = "欢迎&nbsp;"+ localStorage.getItem("userName");
+                $("#uphoto").css("display", "block");
+                $("#user").css("display", "block");
+                $("#reg").css("display", "none");
+                $("#exit").html("退出")
+                if (localStorage.getItem("userImg")) {
+                    var imgBox = document.getElementById("img-box");
+                    var uphoto = document.getElementById("uphoto");
+                    imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                }
+            }
+        }
 
+        $("#exit").click(function () {
+            window.localStorage.clear();
+            location.reload();
+        })
+    </script>
 </body>
 
 </html>

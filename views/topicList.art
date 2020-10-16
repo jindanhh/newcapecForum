@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户话题</title>
+    <link rel="stylesheet" href="/css/userList.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+
+<body>
+    <!-- 头部导航 -->
+    <nav>
+        <div class="box">
+            <a href="" class="logo">
+                <img alt="LOGO" src="/images/logo.png">
+                <span>· 论坛</span>
+            </a>
+            <div class="nav">
+                <ul class="clearfix">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="askList">问答</a></li>
+                    <li><a href="membershipCardList">会员卡</a></li>
+                </ul>
+            </div>
+
+            <div class="head-search">
+                <form action="search" method="get">
+                    <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                    <input type="submit" class="sub-button">
+                </form>
+            </div>
+            <div class="menu">
+                <ul class="clearfix">
+                    <li>
+                        <div class="author" id="uphoto">
+                            <a href="/topicList.html">
+                               <div id="">
+
+                               </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="/userCenter" id="user">admin</a></li>
+                    <li><a href="login.html" id="login">登录</a></li>
+                    <li><a href="reg.html" id="reg">注册</a></li>
+                    <li><a href="#" class="exit" id="exit"></a></li>
+                </ul>
+                </script>
+            </div>
+        </div>
+    </nav>
+
+    <div class="skeleton ">
+        <div class="main wrap backgroundModule">
+
+            <div>
+                <ul class="serviceNav">
+                    <li class="title "><a href="#">动态</a></li>
+                    <li class="title  selected"><a href="user/control/topicList">话题</a></li>
+                    <li class="title "><a href="user/control/commentList">评论</a></li>
+                    <li class="title "><a href="user/control/replyList">评论回复</a></li>
+                    <li class="title "><a href="user/control/questionList">问题</a></li>
+                    <li class="title "><a href="user/control/answerList">答案</a></li>
+                    <li class="title "><a href="user/control/answerReplyList">答案回复</a></li>
+
+                    <li class="title "><a href="user/control/favoriteList">收藏夹</a></li>
+                    <li class="title "><a href="user/control/likeList">点赞</a></li>
+                    <li class="title "><a href="user/control/followList">关注</a></li>
+                    <li class="title "><a href="user/control/followerList">粉丝</a></li>
+                    <li class="title "><a href="user/control/privateMessageList">私信</a></li>
+                    <li class="title "><a href="user/control/remindList">提醒</a></li>
+                    <li class="title "><a href="user/control/systemNotifyList">系统通知</a></li>
+                    <li class="title "><a href="user/control/membershipCardOrderList">会员卡订单</a></li>
+                    <li class="title "><a href="user/control/balance">余额</a></li>
+
+                    <li class="title more hide">
+                        <span>更多</span><i class="cms-angle-down"></i>
+                        <div class="nav-pop-list">
+                            <ul class="ul-navlist">
+                                <li><a href="user/control/giveRedEnvelopeList">发红包</a></li>
+                                <li><a href="user/control/receiveRedEnvelopeList">收红包</a></li>
+                                <li><a href="user/control/editUser">修改个人资料</a></li>
+                                <li><a href="user/control/realNameAuthentication">实名认证</a></li>
+                                <li><a href="user/control/point">积分日志</a></li>
+                                <li><a href="user/control/userLoginLogList">登录日志</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="dataTable">
+                <table class="dataList" width="100%">
+                    <thead>
+                        <tr class="dataThead">
+                            <th width="38%">标题</th>
+                            <th width="20%">访问量</th>
+                            <th width="18%">发表时间</th>
+                            <th width="24%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{each topiclist as paging}}
+                        <tr>
+                            <td class="dataTD">
+                                <a href="thread?topicId=46" target="_blank" class="link">{{paging.topicTitle}}</a>
+                            </td>
+                            <td class="dataTD">
+                                {{paging.visitedCount}}
+                            </td>
+                            <td class="dataTD">
+                                {{paging.topicTime}}
+                            </td>
+                            <td class="dataTD">
+                                <a href="#" target="_self">编辑</a>
+                                <a href="#">删除</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+                <div id="pager">
+                    <span class="btn btn-default">当前页: {{pageNum}} / {{pageCount}}</span>
+                    <!-- 首页 -->
+                    <a href="/userTalk/queryAllTopic?pageNum=1&pageSize=5" class="btn btn-default">首页</a>
+    
+                    <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
+                    {{if (pageNum != 1)}}
+                    <a href="/userTalk/queryAllTopic?pageNum={{pageNum-1}}&pageSize=5"
+                        class="btn btn-default">上一页</a>
+                    {{/if}}
+    
+                    <!-- 显示数值码 -->
+                    <!-- 如果总页码小于等于5 -->
+                    {{if (pageCount <= 5)}}
+                    <% for(var i = 1; i <= pageCount; i++){ %>
+                    <% if (i == pageNum) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="active btn btn-default"><%= i %></a>
+                    <% } else if (pageNum != i) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="btn btn-default"><%= i %></a>
+                    <% } %>
+                    <% } %>
+                    {{/if}}
+    
+                    {{if (pageNum <= 3 && pageCount > 5) }}
+                    <% for(var i = 1; i <= 5; i++){ %>
+                    <% if (i == pageNum) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="active btn btn-default"><%= i %></a>
+                    <% } else if (pageNum != i) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="btn btn-default"><%= i %></a>
+                    <% } %>
+                    <% } %>
+                    {{/if}}
+    
+                    {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
+                    <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
+                    <% if (i == pageNum) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="active btn btn-default"><%= i %></a>
+                    <% } else if (pageNum != i) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="btn btn-default"><%= i %></a>
+                    <% } %>
+                    <% } %>
+                    {{/if}}
+    
+                    {{if (pageNum + 2 > pageCount && pageCount > 5)}}
+                    <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
+                    <% if (i == pageNum) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="active btn btn-default"><%= i %></a>
+                    <% } else if (pageNum != i) { %>
+                    <a href="/userTalk/queryAllTopic?pageNum=<%= i %>&pageSize=5"
+                        class="btn btn-default"><%= i %></a>
+                    <% } %>
+                    <% } %>
+                    {{/if}}
+    
+                    <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
+                    {{if (pageNum != pageCount)}}
+                    <a href="/userTalk/queryAllTopic?pageNum={{pageNum+1}}&pageSize=5"
+                        class="btn btn-default">下一页</a>
+                    {{/if}}
+    
+                    <!-- 尾页 -->
+                    <a href="/userTalk/queryAllTopic?pageNum={{pageCount}}&pageSize=5" class="btn btn-default">尾页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="container-fluid">
+        <p class="text-center">Powered by nodeJs... 联系我们</p>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/comm.js"></script>
+    <script>
+        window.onload = function () {
+            if (localStorage.getItem("userTel")) {
+                var userTel = document.getElementById("login");
+                userTel.innerHTML = "欢迎" + localStorage.getItem("userTel");
+                $("#uphoto").css("display", "block");
+                $("#user").css("display", "block");
+                $("#reg").css("display", "none");
+                $("#exit").html("退出")
+                if (localStorage.getItem("userImg")) {
+                    var user = document.getElementById("user");
+                    // var imgBox = document.getElementById("img-box");
+                    var uphoto = document.getElementById("uphoto");
+                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                    user.innerHTML = localStorage.getItem("userName");
+                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                }
+            }
+        }
+
+        $("#exit").click(function () {
+            window.localStorage.clear();
+            location.reload();
+        })
+    </script>
+</body>
+
+</html>

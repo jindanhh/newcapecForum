@@ -19,7 +19,7 @@
             <div class="box">
                 <a href="" class="logo">
                     <img alt="LOGO" src="/images/logo.png">
-                    <span>· 帖子列表</span>
+                    <span>· 论坛</span>
                 </a>
                 <div class="nav">
                     <ul class="clearfix">
@@ -32,13 +32,23 @@
                 <div class="head-search">
                     <form action="search" method="get">
                         <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                        <input type="submit" class="sub-button">
+                        <!-- <input type="submit" class="sub-button"> -->
                     </form>
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
-                        <li><a href="login.html">登录</a></li>
-                        <li><a href="reg.html">注册</a></li>
+                        <li>
+                            <div class="author" id="uphoto">
+                                <!-- <a href="/topicList.html"> -->
+                                <!-- <img src="/images/users/14.jpg"> -->
+                                <!-- </a> -->
+                            </div>
+                        </li>
+                        <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/userCenter" id="user">用户中心</a></li>
+                        <li><a href="login.html" id="login">登录</a></li>
+                        <li><a href="reg.html" id="reg">注册</a></li>
+                        <li><a href="#" class="exit" id="exit"></a></li>
                     </ul>
                 </div>
             </div>
@@ -177,12 +187,48 @@
     </footer>
 
     <!-- 发帖时判断是否登录 -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/comm.js"></script>
     <script>
-        $(document).ready(
-            $("#posted").click(
+        window.onload = function () {
+            if (localStorage.getItem("userTel")) {
+                var userTel = document.getElementById("login");
+                var userName = localStorage.getItem("userName");
+                console.log(userName)
+                userTel.innerHTML = "欢迎&nbsp;" + localStorage.getItem("userName");
+                $("#uphoto").css("display", "block");
+                $("#user").css("display", "block");
+                $("#reg").css("display", "none");
+                $("#exit").html("退出")
+                if (localStorage.getItem("userImg")) {
+                    // var imgBox = document.getElementById("img-box");
+                    var uphoto = document.getElementById("uphoto");
+                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+                }
+            }
 
-            )
-        )
+            var userName = localStorage.getItem("userName");
+            console.log(userName)
+            $.ajax({
+                url: "/userTalk/queryAllTopic",
+                method: "get",
+                data: {
+                    userName: localStorage.getItem("userName")
+                },
+                success: function (data) {
+                    // console.log(localStorage.getItem("userName"))
+                }
+            })
+
+        }
+
+
+
+        $("#exit").click(function () {
+            window.localStorage.clear();
+            location.reload();
+        })
     </script>
 </body>
 

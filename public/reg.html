@@ -117,12 +117,13 @@
                     <code class="check_reg_pwd2"></code>
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" autocomplete="off" placeholder="请输入验证码" id="code" name="code">
+                        <input type="text" class="form-control" autocomplete="off" placeholder="请输入验证码" id="code"
+                            name="code">
                         <div class="input-group-append">
                             <div id="v_container" class="v_container col-xs-4" style="height:38px;"></div>
                         </div>
                     </div>
-                    
+
                     <code class="check_reg_code"></code>
                     <button type="button" id="regist" class="btn btn-success btn-block">注册</button>
                 </form>
@@ -217,7 +218,7 @@
                                 phoneFlag = false;
                             } else {
                                 obj.html('手机号正确')
-                                obj.css("color","green")
+                                obj.css("color", "green")
                             }
                         }
                     })
@@ -234,7 +235,7 @@
                 })
             })
 
-            
+
 
             //再次输入密码验证
             $('#regcheckpwd').blur(function () {
@@ -255,8 +256,8 @@
             //     let phone = $('#regphone').val()
 
             // })
-           var verifyCode = new GVerify("v_container");
-           var code_input = document.getElementById("code")
+            var verifyCode = new GVerify("v_container");
+            var code_input = document.getElementById("code")
 
             //短信验证码验证
             $('#code').blur(function () {
@@ -264,20 +265,18 @@
                 // let code = $('#code').val();
                 var flag = false;
                 if (res) {
-                   flag = true;
-                   $('.check_reg_code').html('验证码正确')
-                   $('code').css("color", "green")
+                    flag = true;
+                    $('.check_reg_code').html('验证码正确')
+                    $('code').css("color", "green")
                 } else {
-                   flag = false;
-                   $('.check_reg_code').html('验证码错误')
+                    flag = false;
+                    $('.check_reg_code').html('验证码错误')
                 }
-                
             })
-  
 
             //点击注册
             regist.click(function () {
-                console.log("注册");
+                let phone = $('#regphone').val()
                 let check = phoneFlag && checkpwd1 && checkpwd2 && nameFlag
 
                 if (check) {
@@ -286,12 +285,21 @@
                         type: "post",
                         url: "http://127.0.0.1:3000/user/reg",
                         data: {
-                            name: $('#regname').val(),
-                            phone: $('#regphone').val(),
-                            pwd: $('#regpwd').val()
+                            userName: $('#regname').val(),
+                            userTel: $('#regphone').val(),
+                            userPwd: $('#regpwd').val(),
+                            userImg:"/images/users/portrait1.jpg",
+                            userIntegral:200,
+                            userLevel:"Lv0",
+                            userReply:0,
+                            userFocus:0,
+                            userStatus:0   
                         },
                         success: function (data) {
-                            if (data.msg === 'regOk') {
+                            if (data.msg === 'regOK') {
+                                window.localStorage.setItem("login", 1);
+                                window.localStorage.setItem("phone", phone);
+                                // window.localStorage.setItem('logindata', JSON.stringify(data))
                                 location.href = "http://127.0.0.1:3000/login.html"
                             } else {
                                 layer.alert('注册失败!', {
@@ -301,8 +309,9 @@
                         }
                     })
                 } else {
+
                     layer.alert('格式错误', {
-                        icon:5
+                        icon: 5
                     });
                 }
             })
