@@ -9,7 +9,10 @@
 .topic {
     border-bottom: 1px solid #ddd;
 }
-
+.topic>div>img{
+    width: 80px;
+    height: 80px;
+}
 .topic>div {
     padding: 20px 0;
 }
@@ -47,4 +50,9 @@
 .btn-primary img {
     width: 20px;
     margin-right: 10px;
+}
+
+
+section{
+    min-height: 88vh;
 }

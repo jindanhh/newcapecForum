@@ -40,15 +40,20 @@ router.get("/queryAll/:moduleName", function (req, res) {
                 result[i]._id = result[i]._id.toString();               
             }
             var topiclist = result;
-            // 结合populars.art渲染数据
+            dbo.collection("users").find({
+            }).toArray(function (err2, result) {
+                var userArr = result;
+                // 结合topicWorlds.art渲染数据 
                 res.render('topicWorlds.art', {
                     topiclist: topiclist,
                     moduleName: moduleName,
                     pageNum: pageNum,
-                    moduleArr:moduleArr,
+                    moduleArr: moduleArr,                    
+                    userArr: userArr,
                     pageCount: visitedCount % pageSize == 0 ? visitedCount / pageSize : parseInt(visitedCount / pageSize) + 1
                 });
-            
+            })
+                       
         })
 
     }) 
@@ -113,7 +118,7 @@ router.post('/addTopic', function (req, res) {
 // 定义获取帖子详情的路由
 router.get('/queryOne/:topicId', function (req, res) {
     var topicId = req.params.topicId;
-    // console.log("帖子ID:" + topicId);
+    var user;
     // 记录访问次数
     common.getMongoClient().then((client) => {
         var dbo = client.db('newcapecForum');
@@ -128,18 +133,23 @@ router.get('/queryOne/:topicId', function (req, res) {
                 client.close();
         })
     })
-    common.getMongoClient().then((client) => {
+    common.getMongoClient().then(async function (client){
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
-
-        dbo.collection("topicWorlds").find({
+        var topiclist = dbo.collection('topicWorlds').find({
             _id: ObjectId(topicId)
-        }).toArray(function (err, result) {
-            res.render("details.art",{
-                topiclist:result
+        }).toArray(function (err1, result) {
+            topiclist = result;
+            dbo.collection("users").find({
+                userName : topiclist[0].poster
+            }).toArray(function (err2, result) {
+                var userArr = result;
+                res.render('details.art', {
+                    topiclist: topiclist,
+                    userArr: userArr
+                });
             })
-        })
+        });
     })
-    
-})
+    })
 
 module.exports = router
