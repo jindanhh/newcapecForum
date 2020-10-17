@@ -6,6 +6,7 @@ const path = require('path');
 var bodyParse = require('body-parser');
 const user = require('./routes/user')
 const backTopic = require('./routes/backTopic');
+const particulars = require('./routes/particulars');
 const violation = require('./routes/violation');
 const remove = require('./routes/remove');
 const newpop = require('./routes/newpop');
@@ -13,6 +14,7 @@ const member = require('./routes/member');
 const memberDel = require('./routes/memberDel');
 const target = require('./routes/target');
 const newtarget = require('./routes/newtarget');
+const issue = require('./routes/issue');
 
 
 // 用户
@@ -70,6 +72,8 @@ app.use('/member',member)
 app.use('/memberDel',memberDel)
 app.use('/target',target)
 app.use('/newtarget', newtarget)
+app.use('/particulars', particulars)
+app.use('/issue', issue)
 
 app.get('/backIndex',function(req,res){
     res.sendfile('public/backManger.html') ;

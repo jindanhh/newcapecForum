@@ -106,8 +106,7 @@ router.post('/addTopic', function (req, res) {
         var dbo = client.db('newcapecForum');
         dbo.collection('topicWorlds').insertOne(req.body, function (err, resDb) {
             if (err) throw err;
-            // 通过resDb.insertedCount可以获取插入的数量
-            console.log('文档插入成功');            
+            // 通过resDb.insertedCount可以获取插入的数量         
             if (resDb.insertedCount > 0) {
                 res.json({
                     code: 1,

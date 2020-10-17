@@ -79,7 +79,7 @@
     </div>
     <!-- 底部 -->
     <footer class="container-fluid">
-        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号 <a href="/backLogin.html">后台登录</a></p>
     </footer>
 
     <!-- js部分 -->

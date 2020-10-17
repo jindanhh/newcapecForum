@@ -7,13 +7,6 @@ const {
     ObjectId
 } = require('mongodb');
 
-function getTopicCount(dbo) {
-    var topicCount = dbo.collection("topicWorlds").find({
-        _id: ObjectId(topicId)
-    }).count();
-    return topicCount;
-}
-
 router.get("/renderTopic/:contentId", function (req, res) {
     // 获取得到页码和每页显示的条目数
     var contentId = req.params.contentId;
@@ -29,7 +22,7 @@ router.get("/renderTopic/:contentId", function (req, res) {
                 result[i]._id = result[i]._id.toString();
             }
             res.render('particulars.art', {
-                topiclist: result,
+                topiclist: result[0],
             });
         })
     })
