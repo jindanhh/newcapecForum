@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>话题列表</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
-    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css">
 </head>
+
 <body>
     <h1>话题管理</h1>
     <div class="header-btn" style="margin: 10px auto;">
@@ -17,7 +18,7 @@
         <button><a href="" id="del">删除</a></button>
     </div>
 
-    <div id="content">     
+    <div id="content">
         <table>
             <thead>
                 <tr>
@@ -50,11 +51,11 @@
                         <a href=""><a href="">{{topic.poster}}</a></a>
                     </td>
                     <td>
-                        <a href="/backTopic/renderTopic/{{topic._id}}">查看</a>
+                        <a href="/topic/queryOne/{{topic._id}}">查看</a>
                         <a href="/backTopic/delteTopicById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">删除</a>
                     </td>
                 </tr>
-            {{/each}}
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -124,7 +125,7 @@
         var j_cbAll = document.getElementById("j_cbAll");
         var allCheckBox = document.querySelectorAll("#j_tb input[type=checkbox]");
         var btn = document.getElementById("btn");
-      //全选全不选
+        //全选全不选
         j_cbAll.onclick = function () {
             var j_cbAllVal = this.checked;
             for (var i = 0; i < allCheckBox.length; i++) {
@@ -137,8 +138,8 @@
             }
         }
         //都选中的话上边总的也选中
-        function  checkAllCheckBox(){
-            var isChecked = true; 
+        function checkAllCheckBox() {
+            var isChecked = true;
 
             for (var j = 0; j < allCheckBox.length; j++) {
                 if (!allCheckBox[j].checked) {
