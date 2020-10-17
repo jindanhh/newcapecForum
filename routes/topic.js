@@ -92,13 +92,11 @@ router.post('/addTopic', function (req, res) {
     req.body.visitedCount = 0;
     req.body.topicReply =[] ;
     // var topicContent = req.body.topicContent.toString();
-    // console.log(typeof topicContent)
     common.getMongoClient().then(function (client) {
         var dbo = client.db('newcapecForum');
         dbo.collection('topicWorlds').insertOne(req.body, function (err, resDb) {
             if (err) throw err;
-            // 通过resDb.insertedCount可以获取插入的数量
-            console.log('文档插入成功');            
+            // 通过resDb.insertedCount可以获取插入的数量         
             if (resDb.insertedCount > 0) {
                 res.json({
                     code: 1,
@@ -139,14 +137,17 @@ router.get('/queryOne/:topicId', function (req, res) {
             _id: ObjectId(topicId)
         }).toArray(function (err1, result) {
             topiclist = result;
+            var replyList = topiclist[0].topicReply;
+            var replyListLength = replyList.length;
             dbo.collection("users").find({
                 userName : topiclist[0].poster
             }).toArray(function (err2, result) {
                 var userArr = result;
                 res.render('details.art', {
                     topiclist: topiclist,
+                    replyList: replyList,
+                    replyListLength: replyListLength,
                     userArr: userArr
-                   
                 });
             })
         });

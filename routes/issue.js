@@ -8,13 +8,13 @@ const {
 } = require('mongodb');
 
 function getTopicCount(dbo) {
-    var topicCount = dbo.collection("topicWorlds").find({
+    var topicCount = dbo.collection("question").find({
         $or:[{topicStatus:0},{topicStatus:"0"}] 
     }).count();
     return topicCount;
 }
 
-router.get("/queryAll", function (req, res) {
+router.get("/issueAll", function (req, res) {
     
     // 获取得到页码和每页显示的条目数
    
@@ -37,7 +37,7 @@ router.get("/queryAll", function (req, res) {
             }
          
             // 结合populars.art渲染数据
-            res.render('populars.art', {
+            res.render('issue.art', {
                 topiclist: result,
                 pageNum: pageNum,
                 pageCount: topicCount % pageSize == 0 ? topicCount / pageSize : parseInt(topicCount / pageSize) + 1
@@ -48,13 +48,13 @@ router.get("/queryAll", function (req, res) {
 })
 
 // /backstage/delteTopicById/{{topic._id}}
-router.get("/delteTopicById/:topicId", function (req, res) {
+router.get("/delteIssueById/:topicId", function (req, res) {
     var topicId = req.params.topicId;
      // 每访问一次,就记录一次
     common.getMongoClient().then((client) => {
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
 
-        dbo.collection("topicWorlds").updateOne({
+        dbo.collection("question").updateOne({
             _id: ObjectId(topicId)
         }, {
             $set: {
@@ -79,7 +79,7 @@ router.get("/delteTopicById/:topicId", function (req, res) {
         var topicCount = await getTopicCount(dbo);
      
 
-        dbo.collection("topicWorlds").find({
+        dbo.collection("question").find({
             $or:[{topicStatus:0},{topicStatus:"0"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
@@ -87,7 +87,7 @@ router.get("/delteTopicById/:topicId", function (req, res) {
                 result[i]._id = result[i]._id.toString();
             }
             // 结合populars.art渲染数据
-            res.render('populars.art', {
+            res.render('issue.art', {
                 topiclist: result,
                 pageNum: result.length == 0 ? pageNum - 1 : pageNum,
                 pageCount: topicCount % pageSize == 0 ? topicCount / pageSize : parseInt(topicCount / pageSize) + 1

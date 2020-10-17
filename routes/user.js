@@ -94,5 +94,38 @@ router.post('/login', (req, res) => {
         })
     })
 })
+router.post('/adminLogin', (req, res) => {
+    console.log(req.body);
+    common.getMongoClient().then((client) => {
+        // 通过client对象链接到指定的数据库
+        var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
+
+        dbo.collection("admin").find(req.body).toArray(function (err, result) {
+            // console.log("数据库响应数据",result)
+            if (err) throw err;
+            if (result.length > 0) {
+                res.json({
+                    code: 3,
+                    msg: "1",
+                    userInfo:result[0]
+                });
+            } else {
+                res.json({
+                    code: 3,
+                    msg: "0"
+                });
+            }
+            // dbo.collection("users").find({
+            // }).toArray(function (err2, result) {
+            //     var userArr = result;
+            //     res.render('details.art', {
+            //         userArr: userArr
+            //     });
+            // })
+            // 关闭客户端
+            client.close();
+        })
+    })
+})
 
 module.exports = router

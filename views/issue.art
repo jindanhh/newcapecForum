@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
 </head>
 <body>
-    <h1>话题管理</h1>
+    <h1>问题列表</h1>
     <div class="header-btn" style="margin: 10px auto;">
-        <button><a href="/newpop.html">添加话题</a></button>
+        <!-- <button><a href="/newpop.html">添加话题</a></button> -->
         <button><a href="/remove/removeAll?pageSize=10&pageNum=1">回收站</a></button>
         <button><a href="" id="del">删除</a></button>
     </div>
@@ -24,7 +24,7 @@
                     <th><input type="checkbox" name="" id="j_cbAll"></th>
                     <th>标题</th>
                     <th>时间</th>
-                    <th>帖子状态</th>
+                    <th>问题状态</th>
                     <th>作者</th>
                     <th>操作</th>
                 </tr>
@@ -50,8 +50,8 @@
                         <a href=""><a href="">{{topic.poster}}</a></a>
                     </td>
                     <td>
-                        <a href="/topic/queryOne/{{topic._id}}">查看</a>
-                        <a href="/backTopic/delteTopicById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">删除</a>
+                        <a href="/issue/renderTopic/{{topic._id}}">查看</a>
+                        <a href="/issue/delteIssueById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">删除</a>
                     </td>
                 </tr>
             {{/each}}
@@ -61,11 +61,11 @@
     <div id="pager">
         <span>当前页: {{pageNum}} / {{pageCount}}</span>
         <!-- 首页 -->
-        <a href="/backTopic/queryAll?pageNum=1&pageSize=10">首页</a>
+        <a href="/issue/issueAll?pageNum=1&pageSize=10">首页</a>
 
         <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
         {{if (pageNum != 1)}}
-        <a href="/backTopic/queryAll?pageNum={{pageNum-1}}&pageSize=10">上一页</a>
+        <a href="/issue/issueAll?pageNum={{pageNum-1}}&pageSize=10">上一页</a>
         {{/if}}
 
         <!-- 显示数值码 -->
@@ -73,9 +73,9 @@
         {{if (pageCount <= 5)}}
         <% for(var i = 1; i <= pageCount; i++){ %>
         <% if (i == pageNum) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
         <% } else if (pageNum != i) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
         <% } %>
         <% } %>
         {{/if}}
@@ -83,9 +83,9 @@
         {{if (pageNum <= 3 && pageCount > 5) }}
         <% for(var i = 1; i <= 5; i++){ %>
         <% if (i == pageNum) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
         <% } else if (pageNum != i) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
         <% } %>
         <% } %>
         {{/if}}
@@ -93,9 +93,9 @@
         {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
         <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
         <% if (i == pageNum) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
         <% } else if (pageNum != i) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
         <% } %>
         <% } %>
         {{/if}}
@@ -103,19 +103,19 @@
         {{if (pageNum + 2 > pageCount && pageCount > 5)}}
         <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
         <% if (i == pageNum) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10" class="active"><%= i %></a>
         <% } else if (pageNum != i) { %>
-        <a href="/backTopic/queryAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
+        <a href="/issue/issueAll?pageNum=<%= i %>&pageSize=10"><%= i %></a>
         <% } %>
         <% } %>
         {{/if}}
 
         <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
         {{if (pageNum != pageCount)}}
-        <a href="/backTopic/queryAll?pageNum={{pageNum+1}}&pageSize=10">下一页</a>
+        <a href="/issue/issueAll?pageNum={{pageNum+1}}&pageSize=10">下一页</a>
         {{/if}}
         <!-- 尾页 -->
-        <a href="/backTopic/queryAll?pageNum={{pageCount}}&pageSize=10">尾页</a>
+        <a href="/issue/issueAll?pageNum={{pageCount}}&pageSize=10">尾页</a>
     </div>
 
     <!-- js部分 -->
