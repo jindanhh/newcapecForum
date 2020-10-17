@@ -25,6 +25,7 @@ const modify = require('./routes/modify')
 const index = require('./routes/index');
 const topic = require('./routes/topic');
 const posted  = require('./routes/posted');
+const details  = require('./routes/details');
 
 app.use(bodyParse.urlencoded({ extended: false }));
 // 静态资源托管
@@ -51,6 +52,7 @@ app.use('/', index);
 app.use('/index', index);
 app.use('/topic', topic);
 app.use('/posted', posted);
+app.use('/details', details);
 
 // 用户
 app.use('/topicList', topicList)

@@ -113,5 +113,10 @@
 
 #replyContent{
     display: none;
+    margin-top: 20px;
 }
 
+#replyContent .btn-post{
+    display: block;
+    width: 758px;
+}

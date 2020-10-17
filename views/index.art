@@ -31,16 +31,12 @@
                 <div class="head-search">
                     <form action="search" method="get">
                         <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                        <!-- <input type="submit" class="sub-button"> -->
                     </form>
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
                         <li>
                             <div class="author" id="uphoto">
-                                <!-- <a href="/topicList.html"> -->
-                                <!-- <img src="/images/users/14.jpg"> -->
-                                <!-- </a> -->
                             </div>
                         </li>
                         <li><a href="#" id="welcome"></a></li>
@@ -83,7 +79,7 @@
     </div>
     <!-- 底部 -->
     <footer class="container-fluid">
-        <p class="text-center">Powered by nodeJs... 联系我们</p>
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
     </footer>
 
     <!-- js部分 -->

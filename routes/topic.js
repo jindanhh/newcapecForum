@@ -18,7 +18,6 @@ function getUserByUserName(dbo,userName) {
         dbo.collection("users").find({
             userName:userName
         }).toArray(function (err2, result) {
-            // var userArr = result;
             result[0]._id = result[0]._id.toString();
             resovle(result[0])
         })
@@ -64,7 +63,6 @@ router.get("/queryAll/:moduleName", function (req, res) {
                 moduleArr: moduleArr,                    
                 pageCount: visitedCount % pageSize == 0 ? visitedCount / pageSize : parseInt(visitedCount / pageSize) + 1
             }
-            // res.json(topiclist)
             res.render('topicWorlds.art', resData);
                        
         })
@@ -104,8 +102,6 @@ router.post('/addTopic', function (req, res) {
     req.body.topicStatus = 0;
     req.body.visitedCount = 0;
     req.body.topicReply =[] ;
-    // var topicContent = req.body.topicContent.toString();
-    // console.log(typeof topicContent)
     common.getMongoClient().then(function (client) {
         var dbo = client.db('newcapecForum');
         dbo.collection('topicWorlds').insertOne(req.body, function (err, resDb) {
@@ -131,7 +127,6 @@ router.post('/addTopic', function (req, res) {
 // 定义获取帖子详情的路由
 router.get('/queryOne/:topicId', function (req, res) {
     var topicId = req.params.topicId;
-    var user;
     // 记录访问次数
     common.getMongoClient().then((client) => {
         var dbo = client.db('newcapecForum');
@@ -154,7 +149,6 @@ router.get('/queryOne/:topicId', function (req, res) {
             topiclist = result;
             var replyList = topiclist[0].topicReply;
             var replyListLength = replyList.length;
-            // console.log(replyListLength)
             dbo.collection("users").find({
                 userName : topiclist[0].poster
             }).toArray(function (err2, result) {
@@ -167,7 +161,7 @@ router.get('/queryOne/:topicId', function (req, res) {
                 });
             })
         });
-    })
+        })
     })
 
 module.exports = router
