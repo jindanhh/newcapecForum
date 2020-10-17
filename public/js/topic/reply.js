@@ -41,7 +41,7 @@ function getReply() {
             },
             success: function (data) {
                 layer.msg("回复成功")
-                setTimeout('window.location.href = "#"', 1000);                
+                setTimeout('window.location.reload()', 1000);                
             }
         })
        }else{
