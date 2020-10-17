@@ -8,11 +8,12 @@ const {
 } = require('mongodb');
 
 function getTopicCount(dbo) {
-    var topicCount = dbo.collection("question").find({
-        $or:[{topicStatus:0},{topicStatus:"0"}] 
+    var topicCount = dbo.collection("questionModule").find({
+        $or:[{questionStatus:0},{questionStatus:"0"}] 
     }).count();
     return topicCount;
 }
+
 
 router.get("/issueAll", function (req, res) {
     
@@ -28,8 +29,8 @@ router.get("/issueAll", function (req, res) {
         var topicCount = await getTopicCount(dbo);
       
 
-        dbo.collection("topicWorlds").find({
-            $or:[{topicStatus:0},{topicStatus:"0"}] 
+        dbo.collection("questionModule").find({
+            $or:[{questionStatus:0},{questionStatus:"0"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
             for (var i = 0; i < result.length; i++) {
@@ -47,18 +48,17 @@ router.get("/issueAll", function (req, res) {
 
 })
 
-// /backstage/delteTopicById/{{topic._id}}
 router.get("/delteIssueById/:topicId", function (req, res) {
     var topicId = req.params.topicId;
      // 每访问一次,就记录一次
     common.getMongoClient().then((client) => {
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
 
-        dbo.collection("question").updateOne({
+        dbo.collection("questionModule").updateOne({
             _id: ObjectId(topicId)
         }, {
             $set: {
-                topicStatus: 2
+                questionStatus: 2
             }
         }, function (err, dbRes) {
             if (err) throw err;
@@ -72,15 +72,14 @@ router.get("/delteIssueById/:topicId", function (req, res) {
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
-
     common.getMongoClient().then(async function (client) {
         var dbo = client.db("newcapecForum");
         // 查询总条目数
         var topicCount = await getTopicCount(dbo);
      
 
-        dbo.collection("question").find({
-            $or:[{topicStatus:0},{topicStatus:"0"}] 
+        dbo.collection("questionModule").find({
+            $or:[{questionStatus:0},{questionStatus:"0"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
             for (var i = 0; i < result.length; i++) {
