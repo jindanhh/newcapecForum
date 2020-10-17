@@ -47,8 +47,8 @@
                         </div>
                     </li>
                     <li><a href="/userCenter" id="user">admin</a></li>
-                    <li><a href="login.html" id="login">登录</a></li>
-                    <li><a href="reg.html" id="reg">注册</a></li>
+                    <li><a href="/login.html" id="login">登录</a></li>
+                    <li><a href="/reg.html" id="reg">注册</a></li>
                     <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
                 </script>
