@@ -46,16 +46,13 @@
                             </a>
                         </div>
                     </li>
-<<<<<<< HEAD
                     <li><a href="#" id="welcome"></a></li>
-                    <li><a href="login.html" id="login">登录</a></li>
-                    <li><a href="/userCenter" id="user">用户中心</a></li>
-                    <li><a href="reg.html" id="reg">注册</a></li>
-=======
-                    <li><a href="/userCenter" id="user">admin</a></li>
                     <li><a href="/login.html" id="login">登录</a></li>
+                    <li><a href="/userCenter" id="user">用户中心</a></li>
+                    <!-- <li><a href="reg.html" id="reg">注册</a></li> -->
+                    <!-- <li><a href="/userCenter" id="user">admin</a></li> -->
+                    <!-- <li><a href="/login.html" id="login">登录</a></li> -->
                     <li><a href="/reg.html" id="reg">注册</a></li>
->>>>>>> 1e51494e88e77205dc7f7ea169c196a7c2c7f12d
                     <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
                 </script>
@@ -226,10 +223,6 @@
                 $("#user").css("display", "block");
                 $("#reg").css("display", "none");
                 $("#exit").html("退出")
-
-
-                // var imgBox = document.getElementById("img-box");
-                // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
 
                 var uphoto = document.getElementById("uphoto");
                 uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
