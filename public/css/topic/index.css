@@ -1,0 +1,29 @@
+/* 定义 发布帖子按钮样式*/
+.put{
+    margin-top: 60px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-primary img{
+    width: 20px;
+    margin-right: 10px;
+}
+/* 定义模块展示样式 （图片和文字）*/
+.thumbnail img{
+    margin-top: 30px;
+}
+
+.caption h3{
+    letter-spacing:6px;
+}
+
+.caption a{
+    padding: 8px 110px;
+}
+
+
+
+
+
+

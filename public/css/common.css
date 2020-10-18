@@ -14,12 +14,10 @@ body a:hover{
 body a:active{
     text-decoration: none;
 }
-
 /* 重置列表样式 */
 ul li{
     list-style: none;
 }
-
 /* 定义底部样式 */
 footer{
     background:#F7F6F6;

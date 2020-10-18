@@ -1,0 +1,14 @@
+.dataTD{
+    height: 40px;
+}
+.dataTD a{
+    line-height: 40px;
+}
+
+#pager{
+    margin-top: 20px;
+}
+
+.dataList thead{
+    margin-bottom: 30px;
+} 

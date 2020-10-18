@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>话题列表</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link href="dist/summernote.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    
+    <style>
+        .newpop-table{
+            border-collapse: collapse;
+        }
+        .newpop-table td{
+            border: 1px solid #42a5f5;
+        }
+       .newpop-table tr>td:nth-child(1){
+            width: 20%;
+            text-align: right;
+            background: #ecf7fe;
+        }
+       .newpop-table tr>td:nth-child(2){
+            padding: 5px 20px;
+            width: 80%;
+            text-align: left;
+       }
+       .newpop-table .submitBtn button{
+            border: 1px solid #42a5f5;
+            background: #ecf7fe;
+            color: #42a5f5;
+            border-radius: 5px;
+            padding: 0px 15px;
+            height: 28px;
+            line-height: 25px;
+            margin: 5px auto;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>发布话题</h1>
+    <div class="header-btn" style="margin: 10px auto;">
+        <button><a href="/backTopic/queryAll?pageSize=10&pageNum=1">返回</a></button>
+        <button><a href="">删除</a></button>
+    </div>
+    <div id="content">
+        <table class="newpop-table">
+            <tbody class="t-list-tbody ">
+                <tr>
+                    <td>标题：</td>
+                    <td><input type="text" name="topicTitle" class="from-text" id="topicTitle"></td>
+                </tr>
+                <tr>
+                    <td>标签：</td>
+                    <td><input type="text" name="topicTag" id="topicTag" class="from-text"></td>
+                </tr>
+                <tr>
+                    <td>排序：</td>
+                    <td><input type="number" name="visitedCount" id="visitedCount" class="from-text"></td>
+                </tr>
+                <tr>
+                    <td>状态：</td>
+                    <td><input type="radio" name="topicStatus" value="1" >待审核</label>
+                        <input type="radio" name="topicStatus" value="0" >已发布</label></td>
+                </tr>
+                <tr>
+                    <td>内容：</td>
+                    <td><div class="summernote"></div></td>
+                </tr>
+                <tr>
+                    <td class="submitBtn" colspan="2" style="text-align: center;">
+                        <button id="topicSubmit">提交</button>
+                    </td>
+                </tr>
+            </tbody>   
+            
+        </table>
+    </div>
+    
+    <!-- js部分 -->
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="dist/summernote.js"></script>
+    <script src="dist/lang/summernote-zh-CN.js"></script> <!-- 中文-->
+    <script>
+        $(function () {
+            $('.summernote').summernote({
+                height: 200,
+                tabsize: 2,
+                lang: 'zh-CN'
+            });
+        });
+    </script>
+      <script>
+        $(function () {
+            $(".note-video-url").attr({
+                "type": "file",
+                name: "singleFile",
+                id: "singleFile"
+            });
+
+            $(".note-video-btn").click(function () {
+                var fileList = $('#singleFile')[0].files;
+                console.log(fileList);
+                // FormData它是用来异步文件上传的
+                var formData = new FormData();
+                //此处文件名必须为 singleFile ，因为后台设置仅接口此文件名
+                formData.append('singleFile', fileList[0]);
+
+                $.ajax({
+                    url: '/upload/single',
+                    type: 'post',
+                    // 不让jQuery去处理数据,而是让XMLHttpRequest去处理数据
+                    processData: false,
+                    contentType: false, //使用multer配合ajax时无需配置multipart/form-data，multer将自动配置，手动配置将报错，boundary not found
+                    data: formData,
+                    success: function (data) {
+                        console.log(data)
+                        $(".note-video-clip").attr("src", data.path);
+                    }
+                })
+            })
+
+
+            $("#topicSubmit").click(function () {
+                var submitHTML = $(".note-editable").html();
+                var topicTitle = $("#topicTitle").val()
+                var topicTag = $("#topicTag").val()
+                var visitedCount = $("#visitedCount").val()
+                var topicStatus = $("input:radio:checked").val()
+                topicStatus = Number(topicStatus)
+                console.log(topicStatus)
+                console.log(submitHTML);
+                $.ajax({
+                    url: "/newpop/addTopic",
+                    method: "post",
+                    data: {
+                        topicTitle: topicTitle,
+                        topicContent: submitHTML,
+                        topicTag:topicTag,
+                        visitedCount:visitedCount,
+                        topicStatus:topicStatus,
+                        poster:"admin"
+                    },
+                    success: function (data) {
+                        alert("添加成功")
+                        location.reload() 
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

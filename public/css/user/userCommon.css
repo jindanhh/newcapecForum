@@ -4433,7 +4433,6 @@ body {
 	line-height: 40px;
 	font-size: 16px;
 	text-align: center;
-
 }
 
 .selfService .box .ul .item .title .a-title {
@@ -4442,9 +4441,7 @@ body {
 	font-weight: normal;
 	display: block;
 	padding-top: 10px;
-	
 }
-
 
 /** 用户中心动态 **/
 .home-userDynamic {

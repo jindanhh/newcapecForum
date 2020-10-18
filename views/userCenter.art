@@ -47,6 +47,10 @@
                     <li><a href="#" id="welcome"></a></li>
                     <li><a href="/login.html" id="login">登录</a></li>
                     <li><a href="#" id="user">用户中心</a></li>
+<<<<<<< HEAD
+=======
+                    <li><a href="/login.html" id="login">登录</a></li>
+>>>>>>> 1e51494e88e77205dc7f7ea169c196a7c2c7f12d
                     <li><a href="/reg.html" id="reg">注册</a></li>
                     <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
@@ -105,7 +109,7 @@
                                     <img src="/images/users/话题.png" alt="">
                                 </a>
                                 <h4 class="title">
-                                    <a class="a-title" href="/userTalk/queryAllTopic?pageNum=1&pageSize=5" >我的话题</a>
+                                    <a class="a-title" href="/userTalk/queryAllTopic?pageNum=1&pageSize=5">我的话题</a>
                                 </h4>
                             </li>
                         </a>
@@ -142,7 +146,7 @@
                                 <img src="/images/users/modify.png" alt="">
                             </a>
                             <h4 class="title">
-                                <a class="a-title" href="/modify" >修改个人资料</a>
+                                <a class="a-title" href="/modify">修改个人资料</a>
                             </h4>
                         </li>
 

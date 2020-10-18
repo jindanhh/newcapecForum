@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新开普教育论坛-帖子列表页</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/topic/topicWorlds.css">
+</head>
+
+<body>
+
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 论坛</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="askList">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                        <!-- <input type="submit" class="sub-button"> -->
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li>
+                            <div class="author" id="uphoto">
+                                <a href="/topicList.html">
+                                    <img src="/images/users/portrait1.jpg">
+                                </a>
+                            </div>
+                        </li>
+                        <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/userCenter" id="user">用户中心</a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
+                        <li><a href="#" class="exit" id="exit"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 内容主体部分 -->
+    <section>
+        <div class="index_bg"></div>
+        <div class="container">
+            <div class="container row">
+                <div class="page-header col-sm-10">
+                    <h2>{{moduleArr[0].moduleName}}</h2>
+                </div>
+                <div class="col-sm-2 put">
+                    <a href="/topic/posted" class="btn btn-primary" id="posted"><span><img src="/images/index/write.png"
+                                alt=""></span>发布帖子</a>
+                </div>
+            </div>
+        </div>
+        <!-- 帖子列表 -->
+        <div class="container thumbnail">
+            <div id="content" class="caption">
+                {{each topiclist as topic}}
+                <div class="topic row">
+                    <div class="col-sm-1">
+                        <img src={{topic.userInfo.userImg}} alt="用户头像" class="img-circle">
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <a href="/topic/{{topic._id}}" class="module">{{moduleArr[0].moduleName}}</a>
+                            </div>
+                            <div class="col-sm-1">
+                                <a href="/topic/queryOne/{{topic._id}}">{{topic.poster}}</a>
+                            </div>
+                            <div class="col-sm-9">
+                                <a href="/topic/queryOne/{{topic._id}}">发布时间:{{topic.topicTime}}</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <a href="/topic/queryOne/{{topic._id}}">{{topic.topicTitle}}</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <span><img src="/images/topic/visited.png" alt=""></span>
+                                <a href="/topic/queryOne/{{topic._id}}">{{topic.visitedCount}}</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a href="/topic/queryOne/{{topic._id}}">{{topic.topicDes}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+            </div>
+            <div id="pager">
+                <span class="btn btn-default">当前页: {{pageNum}} / {{pageCount}}</span>
+                <!-- 首页 -->
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=1&pageSize=5" class="btn btn-default">首页</a>
+
+                <!-- 上一页: 已经处于第一页,那么就不显示上一页 -->
+                {{if (pageNum != 1)}}
+                <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageNum-1}}&pageSize=5"
+                    class="btn btn-default">上一页</a>
+                {{/if}}
+
+                <!-- 显示数值码 -->
+                <!-- 如果总页码小于等于5 -->
+                {{if (pageCount <= 5)}}
+                <% for(var i = 1; i <= pageCount; i++){ %>
+                <% if (i == pageNum) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="active btn btn-default"><%= i %></a>
+                <% } else if (pageNum != i) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="btn btn-default"><%= i %></a>
+                <% } %>
+                <% } %>
+                {{/if}}
+
+                {{if (pageNum <= 3 && pageCount > 5) }}
+                <% for(var i = 1; i <= 5; i++){ %>
+                <% if (i == pageNum) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="active btn btn-default"><%= i %></a>
+                <% } else if (pageNum != i) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="btn btn-default"><%= i %></a>
+                <% } %>
+                <% } %>
+                {{/if}}
+
+                {{if (pageNum > 3 && (pageNum+2 <= pageCount)) }}
+                <% for(var i = pageNum -2; i <= pageNum + 2; i++){ %>
+                <% if (i == pageNum) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="active btn btn-default"><%= i %></a>
+                <% } else if (pageNum != i) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="btn btn-default"><%= i %></a>
+                <% } %>
+                <% } %>
+                {{/if}}
+
+                {{if (pageNum + 2 > pageCount && pageCount > 5)}}
+                <% for(var i = pageCount - 4; i <= pageCount; i++){ %>
+                <% if (i == pageNum) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="active btn btn-default"><%= i %></a>
+                <% } else if (pageNum != i) { %>
+                <a href="/topic/queryAll/{{moduleName}}?pageNum=<%= i %>&pageSize=5"
+                    class="btn btn-default"><%= i %></a>
+                <% } %>
+                <% } %>
+                {{/if}}
+
+                <!-- 下一页：已经处于最后一页,那么就不显示下一页 -->
+                {{if (pageNum != pageCount)}}
+                <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageNum+1}}&pageSize=5"
+                    class="btn btn-default">下一页</a>
+                {{/if}}
+
+                <!-- 尾页 -->
+                <a href="/topic/queryAll/{{moduleName}}?pageNum={{pageCount}}&pageSize=5" class="btn btn-default">尾页</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="container-fluid">
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
+    </footer>
+
+    <!-- js部分 -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/comm/comm.js"></script>
+    <script src="/js/comm/judge.js"></script>
+   
+</body>
+
+</html>

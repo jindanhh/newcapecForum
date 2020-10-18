@@ -1,0 +1,58 @@
+/* 帖子之间的距离 */
+.caption .row {
+    margin: 5px 0;
+}
+.caption .row:nth-child(2) {
+    padding: 10px 0 5px;
+}
+/* 帖子分隔 */
+.topic {
+    border-bottom: 1px solid #ddd;
+}
+.topic>div>img{
+    width: 80px;
+    height: 80px;
+}
+.topic>div {
+    padding: 20px 0;
+}
+/* 右侧浏览图标 */
+.topic div[class="col-sm-2"] img {
+    width: 20px;
+}
+/* 帖子标题颜色 */
+.topic div[class="col-sm-10"] a {
+    color: black;
+    font-size: 18px;
+}
+/* 文字颜色 */
+.topic a {
+    color: #8a8a8a;
+}
+/* 模块显示 */
+.module {
+    padding: 2px 5px;
+    border: 1px solid #dfdfdf;
+}
+/* 分页模块样式 */
+#pager {
+    padding: 8px;
+    float: right;
+}
+/* 发布帖子按钮 */
+.put {
+    margin-top: 60px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 发布帖子的图标 */
+.btn-primary img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+section{
+    min-height: 88vh;
+}
