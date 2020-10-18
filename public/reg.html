@@ -59,9 +59,7 @@
         <div class="slogan">
             新开普教育<span> · 论坛</span><br><span class="yellow">NewCapec</span>EDU
         </div>
-        <!-- <div id="earth" class="earth">
-            <img src="./images/1.png" class="img-fluid">
-        </div> -->
+    
         <!-- 注册 -->
         <div class="regist" style="display: block;">
             <div class="regist-title">
@@ -236,8 +234,6 @@
                 })
             })
 
-
-
             //再次输入密码验证
             $('#regcheckpwd').blur(function () {
                 let pwd1 = $('#regpwd').val()
@@ -252,18 +248,12 @@
                 })
             })
 
-            //获取验证码
-            // $('.getcode').click(function () {
-            //     let phone = $('#regphone').val()
-
-            // })
             var verifyCode = new GVerify("v_container");
             var code_input = document.getElementById("code")
 
             //短信验证码验证
             $('#code').blur(function () {
                 var res = verifyCode.validate(code_input.value);
-                // let code = $('#code').val();
                 var flag = false;
                 if (res) {
                     flag = true;
@@ -299,7 +289,7 @@
                         success: function (data) {
                             if (data.msg === 'regOK') {
                                 window.localStorage.setItem("login", 1);
-                                window.localStorage.setItem("phone", phone);
+                                // window.localStorage.setItem("phone", phone);
                                 // window.localStorage.setItem('logindata', JSON.stringify(data))
                                 location.href = "http://127.0.0.1:3000/login.html"
                             } else {

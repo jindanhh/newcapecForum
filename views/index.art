@@ -44,9 +44,9 @@
                             </div>
                         </li>
                         <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
                         <li><a href="/userCenter" id="user">用户中心</a></li>
-                        <li><a href="login.html" id="login">登录</a></li>
-                        <li><a href="reg.html" id="reg">注册</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
                         <li><a href="#" class="exit" id="exit"></a></li>
                     </ul>
                 </div>

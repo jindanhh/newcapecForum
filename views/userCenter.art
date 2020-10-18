@@ -45,9 +45,9 @@
                         </div>
                     </li>
                     <li><a href="#" id="welcome"></a></li>
+                    <li><a href="/login.html" id="login">登录</a></li>
                     <li><a href="#" id="user">用户中心</a></li>
-                    <li><a href="login.html" id="login">登录</a></li>
-                    <li><a href="reg.html" id="reg">注册</a></li>
+                    <li><a href="/reg.html" id="reg">注册</a></li>
                     <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
             </div>
@@ -68,8 +68,8 @@
                         </div>
                         <div class="counts clearfix">
                             <div class="point">
-                                <div class="num">
-                                    {{}}
+                                <div class="num" id="num">
+                                    <!-- {{}} -->
                                 </div>
                                 <div class="sub">积分</div>
                             </div>
@@ -81,14 +81,14 @@
                         </div>
                     </div>
                     <div class="head-line">
-                        <div class="name">test</div>
-                        <div class="grade">小有名气</div>
+                        <div class="name" id="userName">test</div>
+                        <div class="grade" id="grade">小有名气</div>
                     </div>
                     <div class="nickname">
                         呢称：测试会员
                     </div>
                     <div class="role">
-                        <i class="userRoleName">VIP</i>
+                        <i class="userRoleName" id="userRoleName">VIP</i>
                     </div>
                     <div class="clearfix"></div>
                     <div class="action-button">
@@ -193,17 +193,29 @@
         window.onload = function () {
             if (localStorage.getItem("userTel")) {
                 var userTel = document.getElementById("login");
-                userTel.innerHTML = "欢迎&nbsp;"+ localStorage.getItem("userName");
+                userTel.innerHTML = "欢迎&nbsp;" + localStorage.getItem("userName");
                 $("#uphoto").css("display", "block");
                 $("#user").css("display", "block");
                 $("#reg").css("display", "none");
                 $("#exit").html("退出")
-                if (localStorage.getItem("userImg")) {
-                    var imgBox = document.getElementById("img-box");
-                    var uphoto = document.getElementById("uphoto");
-                    imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                }
+
+                var imgBox = document.getElementById("img-box");
+                imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+
+                var uphoto = document.getElementById("uphoto");
+                uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+
+
+                var num = document.getElementById("num");
+                num.innerHTML = localStorage.getItem("userIntegral");
+
+
+                var userName = document.getElementById("userName");
+                userName.innerHTML = localStorage.getItem("userName");
+
+
+                var userRoleName = document.getElementById("userRoleName");
+                userRoleName.innerHTML = localStorage.getItem("userLevel");
             }
         }
 

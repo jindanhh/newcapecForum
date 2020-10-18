@@ -4,7 +4,7 @@ const common = require('../modules/common');
 
 // 定义用户注册
 router.post('/reg', (req, res) => {
-    console.log(req.body);
+    
 
     common.getMongoClient().then((client) => {
         var dbo = client.db("newcapecForum");
@@ -35,7 +35,7 @@ router.post('/reg', (req, res) => {
 
 // 判断手机号是否唯一
 router.post("/checkPhoneUnique", function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     // 根据手机号去数据库里面查询
     common.getMongoClient().then((client) => {
         // 通过client对象链接到指定的数据库
@@ -62,7 +62,7 @@ router.post("/checkPhoneUnique", function (req, res) {
 
 // 定义用户登录
 router.post('/login', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     common.getMongoClient().then((client) => {
         // 通过client对象链接到指定的数据库
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
@@ -82,17 +82,46 @@ router.post('/login', (req, res) => {
                     msg: "0"
                 });
             }
-            // dbo.collection("users").find({
-            // }).toArray(function (err2, result) {
-            //     var userArr = result;
-            //     res.render('details.art', {
-            //         userArr: userArr
-            //     });
-            // })
+            client.close();
+        })
+    })
+})
+
+
+// 定义用户修改
+router.post('/modify', (req, res) => {
+   console.log("我是data");
+   console.log("woshidata",req.body);
+   console.log(req.body.phone)
+
+    common.getMongoClient().then((client) => {
+        var dbo = client.db("newcapecForum");
+        dbo.collection("users").updateOne({
+            "userTel":req.body.phone,
+        },{
+            $set: {
+                "userPwd": req.body.newPassword,
+                "userName": req.body.newUserName,
+            }
+        }, function (err, dbres) {
+            if (err) throw err;
+            if (dbres.updateCount > 0) {
+                res.json({
+                    code: 1,
+                    msg: "regOK",
+                    userInfo:result[0]
+                });
+            } else {
+                res.json({
+                    code: 0,
+                    msg: "regError"
+                });
+            }
             // 关闭客户端
             client.close();
         })
     })
+
 })
 
 module.exports = router

@@ -37,8 +37,8 @@
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
-                        <li><a href="login.html">登录</a></li>
-                        <li><a href="reg.html">注册</a></li>
+                        <li><a href="/login.html">登录</a></li>
+                        <li><a href="/reg.html">注册</a></li>
                     </ul>
                 </div>
             </div>

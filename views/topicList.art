@@ -46,8 +46,9 @@
                             </a>
                         </div>
                     </li>
-                    <li><a href="/userCenter" id="user">admin</a></li>
+                    <li><a href="#" id="welcome"></a></li>
                     <li><a href="login.html" id="login">登录</a></li>
+                    <li><a href="/userCenter" id="user">用户中心</a></li>
                     <li><a href="reg.html" id="reg">注册</a></li>
                     <li><a href="#" class="exit" id="exit"></a></li>
                 </ul>
@@ -94,7 +95,6 @@
 
                     </li>
                 </ul>
-
             </div>
 
             <div class="dataTable">
@@ -214,19 +214,20 @@
         window.onload = function () {
             if (localStorage.getItem("userTel")) {
                 var userTel = document.getElementById("login");
-                userTel.innerHTML = "欢迎" + localStorage.getItem("userTel");
+                var userName = document.getElementById("userName");
+                userTel.innerHTML = "欢迎" + localStorage.getItem("userName");
                 $("#uphoto").css("display", "block");
                 $("#user").css("display", "block");
                 $("#reg").css("display", "none");
                 $("#exit").html("退出")
-                if (localStorage.getItem("userImg")) {
-                    var user = document.getElementById("user");
-                    // var imgBox = document.getElementById("img-box");
-                    var uphoto = document.getElementById("uphoto");
-                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                    user.innerHTML = localStorage.getItem("userName");
-                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                }
+
+
+                // var imgBox = document.getElementById("img-box");
+                // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+
+                var uphoto = document.getElementById("uphoto");
+                uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
+
             }
         }
 
