@@ -20,6 +20,7 @@ router.get("/queryAllTopic", function (req, res) {
         // 查询总条目数
         var topicCount = await getTopicCount(dbo);
         dbo.collection("topicWorlds").find({
+            // $or:[{topicStatus:0},{topicStatus:"0"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
             for (var i = 0; i < result.length; i++) {

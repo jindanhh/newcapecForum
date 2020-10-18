@@ -14,6 +14,10 @@
     background-color: #CB3D38;
 }
 
+nav {
+    z-index: 10;
+}
+
 .headerNav {
     height: 40px;
     border: 1px solid #eee;
@@ -26,6 +30,7 @@
 
 .allModule {
     position: relative;
+    /* -top: 100px; */
     width: 1120px;
     margin: 0px auto;
     height: 820px;
@@ -37,7 +42,7 @@
     width: 750px;
     height: 1100px;
     position: absolute;
-    top: 20px;
+    top: 100px;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
 }
@@ -45,12 +50,17 @@
 .moduleImg {
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 100px;
     height: 300px;
     width: 350px;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     background-color: white;
+}
+
+.moduleImg img {
+    width: 350px;
+    height: 300px;
 }
 
 .tagModule {
@@ -87,7 +97,7 @@
 .statusName,
 .allTag {
     display: inline-block;
-    width: 60px;
+    width: 88px;
     height: 15px;
     line-height: 15px;
     font-size: 14px;
@@ -149,7 +159,7 @@
 .questionTime {
     position: absolute;
     top: 55px;
-    left: 150px;
+    left: 200px;
     color: #b5b5b5;
     font-size: 13px;
 }

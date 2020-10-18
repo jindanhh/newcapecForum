@@ -27,7 +27,9 @@ router.get("/", function (req, res) {
     common.getMongoClient().then((client) => {
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
         // 先查询所有的模块
-        dbo.collection("topicModules").find({}).toArray(async function (err, result) {
+        dbo.collection("topicModules").find({
+            $or:[{moduleStatus:0},{moduleStatus:"0"}] ,
+        }).toArray(async function (err, result) {
             var topicModulesArr = result;
             // 根据每个模块的_id去populars中查询对应的文档
             for (var i = 0; i < topicModulesArr.length; i++) {

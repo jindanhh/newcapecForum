@@ -38,15 +38,15 @@ function getQuestionModuleBySid(dbo, id) {
 // 根据id查询用户表
 function getUserModuleById(dbo, id) {
     return new Promise(function (resolve, reject) {
-        dbo.collection("userModule").find({
+        dbo.collection("users").find({
             _id: ObjectId(id)
-        }).toArray(function (err, userModule) {
+        }).toArray(function (err, users) {
             if (err) throw err;
 
-            for (var i = 0; i < userModule.length; i++) {
-                userModule[i]._id = userModule[i]._id.toString();
+            for (var i = 0; i < users.length; i++) {
+                users[i]._id = users[i]._id.toString();
             }
-            resolve(userModule[0]);
+            resolve(users[0]);
         })
     })
 }

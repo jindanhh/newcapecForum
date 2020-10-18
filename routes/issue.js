@@ -9,7 +9,6 @@ const {
 
 function getTopicCount(dbo) {
     var topicCount = dbo.collection("questionModule").find({
-        $or:[{questionStatus:0},{questionStatus:"0"}] 
     }).count();
     return topicCount;
 }
@@ -30,7 +29,7 @@ router.get("/issueAll", function (req, res) {
       
 
         dbo.collection("questionModule").find({
-            $or:[{questionStatus:0},{questionStatus:"0"}] 
+            // $or:[{questionStatus:0},{questionStatus:"0"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
             for (var i = 0; i < result.length; i++) {
@@ -63,7 +62,7 @@ router.get("/issueDelAll", function (req, res) {
       
 
         dbo.collection("questionModule").find({
-            $or:[{questionStatus:2},{questionStatus:"2"}] 
+            // $or:[{questionStatus:2},{questionStatus:"2"}] 
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id
             for (var i = 0; i < result.length; i++) {

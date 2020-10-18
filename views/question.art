@@ -5,14 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/question.css">
 </head>
 
 <body>
-    <header>
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 论坛</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/index">首页</a></li>
+                        <li><a href="/question">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li>
+                            <div class="author" id="uphoto">
+                            </div>
+                        </li>
+                        <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/userCenter" id="user">用户中心</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
+                        <li><a href="#" class="exit" id="exit"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- <header>
         <div class="headerTitle"></div>
         <div class="headerNav"></div>
-    </header>
+    </header> -->
     <section class="sectionModule">
         <div class="allModule">
             <div class="allModuleBorder">
@@ -112,11 +150,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="moduleImg"></div>
+            <div class="moduleImg">
+                <img src="/images/newtimg.jpg" alt="">
+            </div>
         </div>
     </section>
     <footer class="footerModule"></footer>
-    <script src="/js/jquery.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm/comm.js"></script>
+    <script src="js/comm/judge.js"></script>
     <script>
         var allStatus = document.getElementsByClassName("questionStatusName");
         // console.log(allStatus);
@@ -172,6 +215,7 @@
         //     $(".questionStatusName").css("background-color", "green")
         // }
     </script>
+
 </body>
 
 </html>

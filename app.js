@@ -17,6 +17,11 @@ const newtarget = require('./routes/newtarget');
 const issue = require('./routes/issue');
 
 
+//问答
+const question = require('./routes/question');
+// const questionDetail = require('./routes/questionDetail');
+
+
 // 用户
 const topicList = require('./routes/topicList')
 const userTalk = require('./routes/userTalk')
@@ -62,6 +67,10 @@ app.use('/userTalk', userTalk)
 app.use('/userCenter', userCenter)
 app.use('/modify', modify)
 
+//问答
+app.use('/question', question)
+// app.use('/questionDetail', questionDetail)
+
 // 加载后台路由模块
 app.use('/backTopic',backTopic)
 app.use('/violation',violation)
@@ -74,6 +83,7 @@ app.use('/target',target)
 app.use('/newtarget', newtarget)
 app.use('/particulars', particulars)
 app.use('/issue', issue)
+// backQuestion
 
 app.get('/backIndex',function(req,res){
     res.sendfile('public/backManger.html') ;
