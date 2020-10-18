@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/question.css">
+</head>
+
+<body>
+    <header>
+        <div class="headerTitle"></div>
+        <div class="headerNav"></div>
+    </header>
+    <section class="sectionModule">
+        <div class="allModule">
+            <div class="allModuleBorder">
+                <div class="tagModule">
+                    <a href="/question" class="allTag">全部</a>
+                    {{each tagModule as tagModule}}
+                    <a href="/question/{{tagModule._id}}" class="tagName">
+                        {{tagModule.tagName}}
+                    </a>
+                    {{/each}}
+                    <a href="/postNew" class="postNew">
+                        发布话题
+                    </a>
+                </div>
+                <div class="statusModule">
+                    <div class="statusList">
+                        <a href="/question" class="allTag">默认</a>
+                        {{each statusModule as statusModule}}
+                        <a href="/question/{{statusModule._id}}" class="statusName">
+                            {{statusModule.statusName}}
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="questionModule">
+                    <ul>
+                        {{each questionModule as questionModule}}
+                        <li class="allQuestion">
+                            <p class="questionTitle">
+                                <a
+                                    href="/question/questionDetail/{{questionModule._id}}">{{questionModule.questionTitle}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>{{questionModule.userData.userName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="questionStatusName">{{questionModule.statusData.statusName}}</span>
+                            </p>
+                            <p class="questionTime">发布时间：{{questionModule.questionTime}}</p>
+                            <p class="questionIntegral">
+                                <img src="/images/questionIntegral.png" alt="">
+                                {{questionModule.questionIntegral}}
+                            </p>
+                            <p class="questionHits">
+                                <img src="/images/questionHits.png" alt="">
+                                {{questionModule.questionHits}}
+                            </p>
+                            <p class="questionTagName">{{questionModule.tagData.tagName}}</p>
+                            <img src="{{questionModule.userData.userImg}}" alt="" class="questionUserImg">
+                        </li>
+                        <hr>
+                        {{/each}}
+                    </ul>
+                    <ul>
+                        {{each questionModuleByTid as questionModule}}
+                        <li class="allQuestion">
+                            <p class="questionTitle">
+                                <a
+                                    href="/question/questionDetail/{{questionModule._id}}">{{questionModule.questionTitle}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>{{questionModule.userData.userName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="questionStatusName">{{questionModule.statusData.statusName}}</span>
+                            </p>
+                            <p class="questionTime">发布时间：{{questionModule.questionTime}}</p>
+                            <p class="questionIntegral">
+                                <img src="/images/questionIntegral.png" alt="">
+                                {{questionModule.questionIntegral}}
+                            </p>
+                            <p class="questionHits">
+                                <img src="/images/questionHits.png" alt="">
+                                {{questionModule.questionHits}}
+                            </p>
+                            <p class="questionTagName">{{questionModule.tagData.tagName}}</p>
+                            <img src="{{questionModule.userData.userImg}}" alt="" class="questionUserImg">
+                        </li>
+                        <hr>
+                        {{/each}}
+                    </ul>
+                    <ul>
+                        {{each questionModuleBySid as questionModule}}
+                        <li class="allQuestion">
+                            <p class="questionTitle">
+                                <a
+                                    href="/question/questionDetail/{{questionModule._id}}">{{questionModule.questionTitle}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>{{questionModule.userData.userName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="questionStatusName">{{questionModule.statusData.statusName}}</span>
+                            </p>
+                            <p class="questionTime">发布时间：{{questionModule.questionTime}}</p>
+                            <p class="questionIntegral">
+                                <img src="/images/questionIntegral.png" alt="">
+                                {{questionModule.questionIntegral}}
+                            </p>
+                            <p class="questionHits">
+                                <img src="/images/questionHits.png" alt="">
+                                {{questionModule.questionHits}}
+                            </p>
+                            <p class="questionTagName">{{questionModule.tagData.tagName}}</p>
+                            <img src="{{questionModule.userData.userImg}}" alt="" class="questionUserImg">
+                        </li>
+                        <hr>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div class="moduleImg"></div>
+        </div>
+    </section>
+    <footer class="footerModule"></footer>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        var allStatus = document.getElementsByClassName("questionStatusName");
+        // console.log(allStatus);
+        for (var i = 0; i < allStatus.length; i++) {
+            console.log(allStatus[i].innerHTML)
+            if (allStatus[i].innerHTML === "未解决") {
+                allStatus[i].style.background = "red"
+                allStatus[i].style.color = "green"
+            } else {
+                allStatus[i].style.background = "green"
+                allStatus[i].style.color = "red"
+            }
+        }
+        // var allStatus = $(".questionStatusName").text();
+        // console.log(allStatus)
+        // if (allStatus === "未解决") {
+        //     console.log("1");
+        // } else {
+        //     console.log("2");
+        // }
+
+        // var statusName = $(".questionStatusName").html();
+        // console.log(statusName);
+        // 
+        // console.log($(".questionStatusName"))
+        // for (var i = 0; i < $(".questionStatusName").length; i++) {
+        //     console.log($(".questionStatusName")[i]);
+        //     if ($(".questionStatusName")[i].innerHTML === "未解决") {
+        //         $(".questionStatusName").addClass("noFinish");
+        //     } else if ($(".questionStatusName")[i].innerHTML === "已解决") {
+        //         $(".questionStatusName").addClass("finish");
+        //     }
+        // }
+        // console.log($(allStatus));
+        // for (var i = 0; i < $(allStatus).length; i++) {
+        //     var statusName = $(allStatus)[i]
+        //     // console.log(statusName);
+        //     if (statusName.innerHTML === "未解决") {
+        //         console.log(statusName);
+        //         statusName.css("backgroud-color", "red");
+        //         $(statusName).css("backgroud-color", "red");
+        //     }
+        //     // if (statusName === "未解决") {
+        //     //     console.log("1")
+        //     //     $(statusName).css("background-color", "red")
+        //     // } else {
+        //     //     console.log("2")
+        //     // }
+        // }
+        // if (statusName === "未解决") {
+        //     $(".questionStatusName").css("background-color", "red")
+        // } else {
+        //     $(".questionStatusName").css("background-color", "green")
+        // }
+    </script>
+</body>
+
+</html>

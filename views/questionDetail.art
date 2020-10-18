@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新开普教育论坛-帖子详情页</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link href="/css/questionDetails.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="container-fluid">
+        <nav>
+            <div class="box">
+                <a href="" class="logo">
+                    <img alt="LOGO" src="/images/logo.png">
+                    <span>· 问答详情</span>
+                </a>
+                <div class="nav">
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/question">问答</a></li>
+                        <li><a href="membershipCardList">会员卡</a></li>
+                    </ul>
+                </div>
+
+                <div class="head-search">
+                    <form action="search" method="get">
+                        <input name="keyword" value="" autocomplete="off" placeholder="搜索">
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul class="clearfix">
+                        <li>
+                            <div class="author" id="uphoto">
+                            </div>
+                        </li>
+                        <li><a href="#" id="welcome"></a></li>
+                        <li><a href="/userCenter" id="user">用户中心</a></li>
+                        <li><a href="/login.html" id="login">登录</a></li>
+                        <li><a href="/reg.html" id="reg">注册</a></li>
+                        <li><a href="#" class="exit" id="exit"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 内容主体部分 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="thumbnail details">
+                            <span class="btn btn-default">{{questionModule.tagData.tagName}}</span>
+                            <h3>{{questionModule.questionTitle}}</h3>
+                            <p>{{questionModule.questionTime}}<span><img src="/images/questionHits.png"
+                                        alt="浏览量">{{questionModule.questionHits}} 浏览量</span></p>
+                            <div class="caption">
+                                {{questionModule.questionContent}}
+                                <p style="display: none;" id="topicId">{{questionModule._id}}</p>
+                            </div>
+                            <div class="text-center">
+                                <a href="javascript:void(0)" class="btn btn-primary">收藏</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">赞</a>
+                                <a href="#replyContent" class="btn btn-primary" id="reply">回复</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="thumbnail users">
+                            <img src={{questionModule.userData.userImg}} alt="作者头像" class="img-circle">
+                            <a href="">{{questionModule.userData.userName}}</a>
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>回答</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>粉丝</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>关注</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button class="btn btn-primary">关注</button>
+                                    <button class="btn btn-default">发私信</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="thumbnail adv">
+                            <p>相关话题</p>
+                            <div class="caption">
+                                <ul>
+                                    <li><a href="">{{questionModule.tagData.tagName}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="replyContent">
+            <textarea id="note-codable" cols="105" rows="10" style="resize: none;" placeholder="留下你的回复吧"></textarea>
+            <button id="replySubmit" class="btn btn-primary btn-post">提交</button>
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <footer class="container-fluid">
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
+    </footer>
+
+    <!-- js部分 -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/layer.js"></script>
+    <script src="/js/comm/judge.js"></script>
+    <script src="/js/comm/comm.js"></script>
+    <script src="/js/topic/reply.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
