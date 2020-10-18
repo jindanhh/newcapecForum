@@ -35,10 +35,6 @@ router.post('/reg', (req, res) => {
 
 // 判断手机号是否唯一
 router.post("/checkPhoneUnique", function (req, res) {
-<<<<<<< HEAD
-    // console.log(req.body);
-=======
->>>>>>> 1e51494e88e77205dc7f7ea169c196a7c2c7f12d
     // 根据手机号去数据库里面查询
     common.getMongoClient().then((client) => {
         // 通过client对象链接到指定的数据库
@@ -63,12 +59,8 @@ router.post("/checkPhoneUnique", function (req, res) {
 })
 
 
-// 定义用户登录
+// 定义用户登
 router.post('/login', (req, res) => {
-<<<<<<< HEAD
-    // console.log(req.body);
-=======
->>>>>>> 1e51494e88e77205dc7f7ea169c196a7c2c7f12d
     common.getMongoClient().then((client) => {
         // 通过client对象链接到指定的数据库
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
