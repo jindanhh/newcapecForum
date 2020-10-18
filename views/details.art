@@ -18,7 +18,7 @@
             <div class="box">
                 <a href="" class="logo">
                     <img alt="LOGO" src="/images/logo.png">
-                    <span>· 论坛</span>
+                    <span>· 帖子详情</span>
                 </a>
                 <div class="nav">
                     <ul class="clearfix">
@@ -31,16 +31,12 @@
                 <div class="head-search">
                     <form action="search" method="get">
                         <input name="keyword" value="" autocomplete="off" placeholder="搜索">
-                        <!-- <input type="submit" class="sub-button"> -->
                     </form>
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
                         <li>
                             <div class="author" id="uphoto">
-                                <!-- <a href="/topicList.html"> -->
-                                <!-- <img src="/images/users/14.jpg"> -->
-                                <!-- </a> -->
                             </div>
                         </li>
                         <li><a href="#" id="welcome"></a></li>
@@ -59,7 +55,6 @@
         <div class="row">
             <div class="col-sm-8">
                 {{each topiclist as topic}}
-                {{each userArr as user}}
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="thumbnail details">
@@ -69,38 +64,44 @@
                                         alt="浏览量">{{topic.visitedCount}}浏览量</span></p>
                             <div class="caption">
                                 {{#topic.topicContent}}
+                                <p style="display: none;" id="topicId">{{topic._id}}</p>
                             </div>
                             <div class="text-center">
-                                <a class="btn btn-primary">收藏</a>
-                                <a class="btn btn-primary">赞</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">收藏</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">赞</a>
+                                <a href="#replyContent" class="btn btn-primary" id="reply">回复</a>
                             </div>
                         </div>
                     </div>
+                    
+                    <p style="display: none;" id="replyList">{{replyListLength}}</p>
                     <div class="col-sm-12">
                         <div class="thumbnail reply">
+                            {{each replyList as reply}}
                             <div class="row">
                                 <div class="col-sm-2 text-center">
-                                    <img src={{user.userImg}} alt="用户头像" class="img-circle">
+                                    <img src={{reply.replyImg}} alt="回复头像" class="img-circle">
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="row">
-                                        <p>{{topic.poster}}</p>
-                                        <p>{{topic.topicTime}}</p>
+                                        <p>{{reply.replyName}}</p>
+                                        <p>{{reply.replyTime}}</p>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                             <div class="caption">
-                                {{topic.topicReply}}
+                                {{#reply.replyContent}}
                             </div>
                             <div class="tools">
                                 <ul>
-                                    <a href="">回复</a>|<a href="">引用</a>
+                                    <a href="javascript:void(0)">回复</a><a href="javascript:void(0)">引用</a>
                                 </ul>
                             </div>
+                            {{/each}}
                         </div>
+
                     </div>
                 </div>
-                {{/each}}
                 {{/each}}
             </div>
             <div class="col-sm-4">
@@ -108,7 +109,7 @@
                     {{each userArr as user}}
                     <div class="col-sm-12 text-center">
                         <div class="thumbnail users">
-                            <img src={{user.userImg}} alt="用户头像" class="img-circle">
+                            <img src={{user.userImg}} alt="作者头像" class="img-circle">
                             <a href="">{{user.userName}}</a>
                             <div class="caption">
                                 <div class="row">
@@ -151,54 +152,26 @@
             </div>
         </div>
 
+        <div id="replyContent">
+            <textarea id="note-codable" cols="105" rows="10" style="resize: none;" placeholder="留下你的回复吧"></textarea>
+            <button id="replySubmit" class="btn btn-primary btn-post">提交</button>
+        </div>
+
     </div>
 
     <!-- 底部 -->
     <footer class="container-fluid">
-        <p class="text-center">Powered by nodeJs... 联系我们</p>
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
     </footer>
 
     <!-- js部分 -->
     <script src="/js/jquery.min.js"></script>
+    <script src="/js/layer.js"></script>
+    <script src="/js/comm/judge.js"></script>
     <script src="/js/comm/comm.js"></script>
+    <script src="/js/topic/reply.js"></script>
     <script>
-        window.onload = function () {
-            if (localStorage.getItem("userTel")) {
-                var userTel = document.getElementById("login");
-                var userName = localStorage.getItem("userName");
-                console.log(userName)
-                userTel.innerHTML = "欢迎&nbsp;" + localStorage.getItem("userName");
-                $("#uphoto").css("display", "block");
-                $("#user").css("display", "block");
-                $("#reg").css("display", "none");
-                $("#exit").html("退出")
-                if (localStorage.getItem("userImg")) {
-                    // var imgBox = document.getElementById("img-box");
-                    var uphoto = document.getElementById("uphoto");
-                    // imgBox.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                    uphoto.innerHTML = "<img src=" + localStorage.getItem("userImg") + ">";
-                }
-            }
-
-            var userName = localStorage.getItem("userName");
-            console.log(userName)
-            $.ajax({
-                url: "/userTalk/queryAllTopic",
-                method: "get",
-                data: {
-                    userName: localStorage.getItem("userName")
-                },
-                success: function (data) {
-                    // console.log(localStorage.getItem("userName"))
-                }
-            })
-
-        }
-
-        $("#exit").click(function () {
-            window.localStorage.clear();
-            location.reload();
-        })
+        getReply();
     </script>
 </body>
 

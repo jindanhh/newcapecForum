@@ -15,9 +15,7 @@ function getTopicCount(dbo) {
 }
 
 router.get("/violationAll", function (req, res) {
-    console.log("管理员查询所有的帖子");
     // 获取得到页码和每页显示的条目数
-    console.log(req.query);
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
@@ -26,7 +24,6 @@ router.get("/violationAll", function (req, res) {
         var dbo = client.db("newcapecForum");
         // 查询总条目数
         var topicCount = await getTopicCount(dbo);
-        console.log("所有帖子的数量:" + topicCount);
 
         dbo.collection("topicWorlds").find({
             $or:[{topicStatus:1},{topicStatus:"1"}]
@@ -49,7 +46,6 @@ router.get("/violationAll", function (req, res) {
 // /backstage/delteTopicById/{{topic._id}}
 router.get("/recoverTopicById/:topicId", function (req, res) {
     var topicId = req.params.topicId;
-    console.log("帖子ID:" + topicId);
     // 每访问一次,就记录一次
     common.getMongoClient().then((client) => {
         var dbo = client.db("newcapecForum"); // dbo就是指定的数据库对象
@@ -62,13 +58,11 @@ router.get("/recoverTopicById/:topicId", function (req, res) {
             }
         }, function (err, dbRes) {
             if (err) throw err;
-            console.log("帖子已恢复!", dbRes.result.nModified);
             client.close();
         })
     })
 
     // 获取得到页码和每页显示的条目数
-    console.log(req.query);
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
@@ -77,7 +71,6 @@ router.get("/recoverTopicById/:topicId", function (req, res) {
         var dbo = client.db("newcapecForum");
         // 查询总条目数
         var topicCount = await getTopicCount(dbo);
-        console.log("所有帖子的数量:" + topicCount);
 
         dbo.collection("topicWorlds").find({
             $or:[{topicStatus:1},{topicStatus:"1"}]

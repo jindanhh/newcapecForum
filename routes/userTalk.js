@@ -11,17 +11,14 @@ function getTopicCount(dbo) {
 // 定义topicList路由
 router.get("/queryAllTopic", function (req, res) {
     // 获取得到页码和每页显示的条目数
-    console.log(req.query);
     var pageNum = Number(req.query.pageNum);
     var pageSize = Number(req.query.pageSize);
     var skipValue = (pageNum - 1) * pageSize;
     var userName = req.body.userName;
-    // console.log(userName)
     common.getMongoClient().then(async function (client) {
         var dbo = client.db("newcapecForum");
         // 查询总条目数
         var topicCount = await getTopicCount(dbo);
-        // console.log("所有帖子的数量:" + topicCount);
         dbo.collection("topicWorlds").find({
         }).skip(skipValue).limit(pageSize).toArray(function (err, result) {
             // 处理帖子id

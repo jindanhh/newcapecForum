@@ -31,6 +31,14 @@ footer p {
 
 }
 
+footer p a{
+	color: black;
+}
+
+footer p a:hover{
+	color: #8A8A8A;
+}
+
 /* 定义主体内容距离顶部距离 */
 .container:first-child{
     margin-top: 20px;
@@ -189,4 +197,8 @@ nav .box .head-search form input.sub-button {
 	cursor: pointer;
 	margin: 0px;
 	background: url(../images/search.png) no-repeat center;
+}
+
+nav .box .logo span{
+	color: #8A8A8A;
 }
