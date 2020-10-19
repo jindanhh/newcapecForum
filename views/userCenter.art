@@ -183,7 +183,11 @@
 
     <!-- 底部 -->
     <footer class="container-fluid">
+<<<<<<< HEAD
         <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号 <a href="/backLogin.html">后台登录</a></p>
+=======
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号</p>
+>>>>>>> 66de30180d9b253f611a17f0b1fdfd691d13b58d
     </footer>
 
     <!-- js部分 -->

@@ -19,8 +19,6 @@ const issue = require('./routes/issue');
 
 //问答
 const question = require('./routes/question');
-// const questionDetail = require('./routes/questionDetail');
-
 
 // 用户
 const topicList = require('./routes/topicList')
@@ -83,7 +81,6 @@ app.use('/target',target)
 app.use('/newtarget', newtarget)
 app.use('/particulars', particulars)
 app.use('/issue', issue)
-// backQuestion
 
 app.get('/backIndex',function(req,res){
     res.sendfile('public/backManger.html') ;
