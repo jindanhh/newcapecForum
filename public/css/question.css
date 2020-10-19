@@ -53,12 +53,13 @@ nav {
     top: 100px;
     height: 300px;
     width: 350px;
-    border: 1px solid #d9d9d9;
-    border-radius: 5px;
+    /* border: 1px solid #d9d9d9; */
+    /* border-radius: 5px; */
     background-color: white;
 }
 
 .moduleImg img {
+    border-radius: 15px; 
     width: 350px;
     height: 300px;
 }

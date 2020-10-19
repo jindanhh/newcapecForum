@@ -47,10 +47,7 @@
             </div>
         </nav>
     </header>
-    <!-- <header>
-        <div class="headerTitle"></div>
-        <div class="headerNav"></div>
-    </header> -->
+
     <section class="sectionModule">
         <div class="allModule">
             <div class="allModuleBorder">
@@ -166,54 +163,16 @@
         for (var i = 0; i < allStatus.length; i++) {
             console.log(allStatus[i].innerHTML)
             if (allStatus[i].innerHTML === "未解决") {
-                allStatus[i].style.background = "red"
-                allStatus[i].style.color = "green"
-            } else {
-                allStatus[i].style.background = "green"
+                allStatus[i].style.background = "#eee"
                 allStatus[i].style.color = "red"
+            } else {
+                allStatus[i].style.background = "#ccc"
+                allStatus[i].style.color = "green"
             }
         }
-        // var allStatus = $(".questionStatusName").text();
-        // console.log(allStatus)
-        // if (allStatus === "未解决") {
-        //     console.log("1");
-        // } else {
-        //     console.log("2");
-        // }
+       
 
-        // var statusName = $(".questionStatusName").html();
-        // console.log(statusName);
-        // 
-        // console.log($(".questionStatusName"))
-        // for (var i = 0; i < $(".questionStatusName").length; i++) {
-        //     console.log($(".questionStatusName")[i]);
-        //     if ($(".questionStatusName")[i].innerHTML === "未解决") {
-        //         $(".questionStatusName").addClass("noFinish");
-        //     } else if ($(".questionStatusName")[i].innerHTML === "已解决") {
-        //         $(".questionStatusName").addClass("finish");
-        //     }
-        // }
-        // console.log($(allStatus));
-        // for (var i = 0; i < $(allStatus).length; i++) {
-        //     var statusName = $(allStatus)[i]
-        //     // console.log(statusName);
-        //     if (statusName.innerHTML === "未解决") {
-        //         console.log(statusName);
-        //         statusName.css("backgroud-color", "red");
-        //         $(statusName).css("backgroud-color", "red");
-        //     }
-        //     // if (statusName === "未解决") {
-        //     //     console.log("1")
-        //     //     $(statusName).css("background-color", "red")
-        //     // } else {
-        //     //     console.log("2")
-        //     // }
-        // }
-        // if (statusName === "未解决") {
-        //     $(".questionStatusName").css("background-color", "red")
-        // } else {
-        //     $(".questionStatusName").css("background-color", "green")
-        // }
+       
     </script>
 
 </body>

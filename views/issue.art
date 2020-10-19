@@ -24,10 +24,10 @@
                     <th><input type="checkbox" name="" id="j_cbAll"></th>
                     <th>标题</th>
                     <th>时间</th>
-                    <th>问题状态</th>
+                    <!-- <th>问题状态</th> -->
                     <th>悬赏积分</th>
-                    <th>作者</th>
-                    <th>操作</th>
+                    <!-- <th>作者</th> -->
+                    <!-- <th>操作</th> -->
                 </tr>
             </thead>
             <tbody class="t-list-tbody" id="j_tb">
@@ -41,20 +41,14 @@
                     <td>
                         {{issue.questionTime}}
                     </td>
-                    <td>
-                        {{if ( issue.questionStatus == 0 )}}
-                        <span>已发布</span>
-                        {{/if}}
-                    </td>
+                 
                     <td>
                         {{issue.questionIntegral}}
                     </td>
-                    <td>
-                        <a href=""><a href="">{{issue.questionPoster}}</a></a>
-                    </td>
-                    <td>
+                  
+                    <!-- <td>
                         <a href="/issue/delteIssueById/{{issue._id}}?pageNum={{pageNum}}&pageSize=10">删除</a>
-                    </td>
+                    </td> -->
                 </tr>
             {{/each}}
             </tbody>
