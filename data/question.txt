@@ -1,0 +1,119 @@
+db.statusModule.insert([
+{ 
+    "_id" : ObjectId("5f8c17263c2960491cf43a1f"), 
+    "statusName" : "已解决"
+}
+{ 
+    "_id" : ObjectId("5f8c17263c2960491cf43a20"), 
+    "statusName" : "未解决"
+}
+])
+
+
+
+db.tagModule.insert([
+{ 
+    "_id" : ObjectId("5f8c16be3c2960491cf43a1a"), 
+    "tagName" : "UI设计"
+}
+{ 
+    "_id" : ObjectId("5f8c16be3c2960491cf43a1b"), 
+    "tagName" : "Java开发"
+}
+{ 
+    "_id" : ObjectId("5f8c16be3c2960491cf43a1c"), 
+    "tagName" : "嵌入式开发"
+}
+{ 
+    "_id" : ObjectId("5f8c16be3c2960491cf43a1d"), 
+    "tagName" : "安卓开发"
+}
+{ 
+    "_id" : ObjectId("5f8c16be3c2960491cf43a1e"), 
+    "tagName" : "WEB前端开发"
+}
+])
+
+
+
+
+
+
+db.questionModule.insert([
+{ 
+   
+    "questionTitle" : "jvm运行原理", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求大神解答", 
+    "questionIntegral" : "5", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a1f", 
+    "tid" : "5f8c16be3c2960491cf43a1b", 
+    "uid" : "5f8a5017381fa37d379063c9"
+},
+{ 
+  
+    "questionTitle" : "redis处理缓存机制是什么？", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求解", 
+    "questionIntegral" : "4", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a1f", 
+    "tid" : "5f8c16be3c2960491cf43a1b", 
+    "uid" : "5f8a5017381fa37d379063cb"
+},
+{ 
+    "questionTitle" : "css的三层构成？", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "面试题，在线等，挺急的", 
+    "questionIntegral" : "3", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a20", 
+    "tid" : "5f8c16be3c2960491cf43a1e", 
+    "uid" : "5f8a5017381fa37d379063cb"
+},
+{ 
+   
+    "questionTitle" : "pr截取视频", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求大神解答", 
+    "questionIntegral" : "5", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a20", 
+    "tid" : "5f8c16be3c2960491cf43a1a", 
+    "uid" : "5f8a5017381fa37d379063c7"
+},
+{ 
+   
+    "questionTitle" : "ps截图", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求大神解答", 
+    "questionIntegral" : "5", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a1f", 
+    "tid" : "5f8c16be3c2960491cf43a1a", 
+    "uid" : "5f8a5017381fa37d379063ca"
+},
+{ 
+   
+    "questionTitle" : "layout的布局样式", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求大神解答", 
+    "questionIntegral" : "5", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a20", 
+    "tid" : "5f8c16be3c2960491cf43a1d", 
+    "uid" : "5f8a5017381fa37d379063ca"
+},
+{ 
+   
+    "questionTitle" : "linux系统回收机制", 
+    "questionTime" : "2020-10-13 12:23", 
+    "questionContent" : "求大神解答", 
+    "questionIntegral" : "5", 
+    "questionHits" : 0.0, 
+    "sid" : "5f8c17263c2960491cf43a20", 
+    "tid" : "5f8c16be3c2960491cf43a1c", 
+    "uid" : "5f8a5017381fa37d379063ca"
+}
+])

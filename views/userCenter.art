@@ -24,7 +24,7 @@
             <div class="nav">
                 <ul class="clearfix">
                     <li><a href="/">首页</a></li>
-                    <li><a href="askList">问答</a></li>
+                    <li><a href="/question">问答</a></li>
                     <li><a href="membershipCardList">会员卡</a></li>
                 </ul>
             </div>
@@ -183,7 +183,7 @@
 
     <!-- 底部 -->
     <footer class="container-fluid">
-        <p class="text-center">Powered by nodeJs... 联系我们</p>
+        <p class="text-center">Copyright © 2000 - 2020 新开普电子股份有限公司. 　All Rights Reserved.　豫ICP备08102576号 <a href="/backLogin.html">后台登录</a></p>
     </footer>
 
     <!-- js部分 -->

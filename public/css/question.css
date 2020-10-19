@@ -26,6 +26,7 @@ nav {
 /* section */
 .sectionModule {
     background-color: #F5F5F5;
+    height: 1100px;
 }
 
 .allModule {
@@ -33,7 +34,7 @@ nav {
     /* -top: 100px; */
     width: 1120px;
     margin: 0px auto;
-    height: 820px;
+    height: 1100px;
     /* border: 1px solid black; */
 }
 
@@ -43,7 +44,7 @@ nav {
     height: 1100px;
     position: absolute;
     top: 100px;
-    border: 1px solid #d9d9d9;
+    /* border: 1px solid #d9d9d9; */
     border-radius: 5px;
 }
 
