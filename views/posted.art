@@ -41,10 +41,6 @@
                 </div>
                 <div class="menu">
                     <ul class="clearfix">
-<<<<<<< HEAD
-                        <li><a href="/login.html">登录</a></li>
-                        <li><a href="/reg.html">注册</a></li>
-=======
                         <li>
                             <div class="author" id="uphoto">
                                 <a href="/topicList.html">
@@ -57,7 +53,6 @@
                         <li><a href="/login.html" id="login">登录</a></li>
                         <li><a href="/reg.html" id="reg">注册</a></li>
                         <li><a href="#" class="exit" id="exit"></a></li>
->>>>>>> 1e51494e88e77205dc7f7ea169c196a7c2c7f12d
                     </ul>
                 </div>
             </div>

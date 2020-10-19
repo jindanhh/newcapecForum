@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>审核话题</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/layui/css/index.css" type="text/css" >
-    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css" >
+    <link rel="stylesheet" href="/layui/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/layui/css/populars.css" type="text/css">
 </head>
+
 <body>
     <h1>审核话题</h1>
     <div class="header-btn" style="margin: 10px auto;">
@@ -29,30 +30,30 @@
             </thead>
             <tbody class="t-list-tbody" id="j_tb">
                 {{each topiclist as topic}}
-            <tr class="topic">
-                <td><input type="checkbox" name="" id=""></td>
-                <td>
-                    <a href="">{{topic.topicTitle}}</a>
-                </td>
-                <td>
-                    <a href="">{{topic.topicTime}}</a>
-                </td>
-                <td>
-                    {{if ( topic.topicStatus == 1 )}}
-                    <span>待审核</span>
-                    {{/if}}
-                    <!-- <a href="">{{topic.topicStatus}}</a> -->
-                </td>
-                <td>
-                    <a href=""><a href="">{{topic.poster}}</a></a>
-                </td>
-                <td>
-                    <a href="/violation/recoverTopicById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">发布</a>
-                </td>
-            </tr>
-            {{/each}}
+                <tr class="topic">
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>
+                        <a href="">{{topic.topicTitle}}</a>
+                    </td>
+                    <td>
+                        <a href="">{{topic.topicTime}}</a>
+                    </td>
+                    <td>
+                        {{if ( topic.topicStatus == 1 )}}
+                        <span>待审核</span>
+                        {{/if}}
+                        <!-- <a href="">{{topic.topicStatus}}</a> -->
+                    </td>
+                    <td>
+                        <a href=""><a href="">{{topic.poster}}</a></a>
+                    </td>
+                    <td>
+                        <a href="/violation/recoverTopicById/{{topic._id}}?pageNum={{pageNum}}&pageSize=10">发布</a>
+                    </td>
+                </tr>
+                {{/each}}
             </tbody>
-            
+
         </table>
     </div>
     <div id="pager">
@@ -122,7 +123,7 @@
         var j_cbAll = document.getElementById("j_cbAll");
         var allCheckBox = document.querySelectorAll("#j_tb input[type=checkbox]");
         var btn = document.getElementById("btn");
-      //全选全不选
+        //全选全不选
         j_cbAll.onclick = function () {
             var j_cbAllVal = this.checked;
             for (var i = 0; i < allCheckBox.length; i++) {
@@ -138,8 +139,8 @@
 
 
         //都选中的话上边总的也选中
-        function  checkAllCheckBox(){
-            var isChecked = true; 
+        function checkAllCheckBox() {
+            var isChecked = true;
 
             for (var j = 0; j < allCheckBox.length; j++) {
                 if (!allCheckBox[j].checked) {
@@ -150,7 +151,6 @@
 
             j_cbAll.checked = isChecked;
         }
-
     </script>
     <script>
         $(function () {
